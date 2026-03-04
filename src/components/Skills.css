@@ -1,0 +1,204 @@
+/* ============================================
+   SKILLS SECTION STYLES
+   Node-based layout (prepares for constellation effect)
+   ============================================ */
+
+.skills {
+  /* Content-based height, reduced padding */
+  padding: var(--spacing-lg) 0;
+  
+  /* Return to primary background */
+  background-color: var(--color-bg-primary);
+  
+  /* Position relative for future constellation lines */
+  position: relative;
+}
+
+/* Section Header */
+.skills-header {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Skills Content Container */
+.skills-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* Skill Category */
+.skill-category {
+  /* Category container */
+  margin-bottom: var(--spacing-lg);
+}
+
+.category-title {
+  font-size: var(--font-size-xl);
+  color: var(--color-accent-primary);
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Skills Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+}
+
+/* Skill Node (Individual skill card) */
+.skill-node {
+  /* Node appearance */
+  background-color: rgba(255, 255, 255, 0.02);
+  border: var(--border-thin) solid rgba(0, 240, 255, 0.2);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  
+  /* Center content */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  
+  /* Position for decorative dot */
+  position: relative;
+  
+  /* Transitions */
+  transition: all var(--transition-normal);
+  
+  /* Cursor */
+  cursor: pointer;
+}
+
+/* Hover effect */
+.skill-node:hover {
+  border-color: var(--color-accent-primary);
+  background-color: rgba(0, 240, 255, 0.05);
+  transform: scale(1.05);
+  box-shadow: var(--glow-subtle);
+}
+
+/* Decorative dot (hints at constellation node) */
+.skill-dot {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-accent-primary);
+  opacity: 0.5;
+  transition: all var(--transition-normal);
+}
+
+.skill-node:hover .skill-dot {
+  opacity: 1;
+  box-shadow: 0 0 10px var(--color-accent-primary);
+}
+
+/* Skill Name */
+.skill-name {
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Skill Level Badge */
+.skill-level {
+  font-size: var(--font-size-xs);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* Level variations */
+.level-advanced {
+  background-color: rgba(0, 240, 255, 0.15);
+  color: var(--color-accent-primary);
+  border: 1px solid var(--color-accent-primary);
+}
+
+.level-intermediate {
+  background-color: rgba(122, 0, 255, 0.15);
+  color: var(--color-accent-secondary);
+  border: 1px solid var(--color-accent-secondary);
+}
+
+.level-learning {
+  background-color: rgba(255, 46, 99, 0.15);
+  color: var(--color-accent-warning);
+  border: 1px solid var(--color-accent-warning);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .skills {
+    padding: var(--spacing-lg) 0;
+  }
+  
+  .skills-content {
+    gap: var(--spacing-lg);
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-sm);
+  }
+  
+  .category-title {
+    font-size: var(--font-size-lg);
+  }
+  
+  .skill-node {
+    padding: var(--spacing-sm);
+  }
+  
+  .skill-name {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .skills-header {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .skill-node {
+    padding: var(--spacing-xs);
+  }
+  
+  .skill-name {
+    font-size: var(--font-size-xs);
+  }
+  
+  .skill-level {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+  
+  .skill-dot {
+    width: 4px;
+    height: 4px;
+    top: 6px;
+    right: 6px;
+  }
+}

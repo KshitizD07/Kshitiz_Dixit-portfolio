@@ -1,0 +1,156 @@
+/* ============================================
+   HERO SECTION STYLES
+   ============================================ */
+
+.hero {
+  /* Full viewport height for impact */
+  min-height: 100vh;
+  
+  /* Center content vertically and horizontally */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Subtle dark background (will add starfield in Phase 3) */
+  background-color: var(--color-bg-primary);
+  
+  /* Position relative for future particle effects */
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  /* Center text */
+  text-align: center;
+  
+  /* Maximum width for readability */
+  max-width: 800px;
+  
+  /* Add some vertical spacing */
+  padding: var(--spacing-lg) 0;
+  
+  /* Smooth fade-in animation */
+  animation: fadeIn 1s ease-out;
+}
+
+/* Hero Title Styles */
+.hero-title {
+  /* Large, impactful size */
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  
+  /* Bright white for contrast */
+  color: var(--color-text-primary);
+  
+  /* Letter spacing for futuristic feel */
+  letter-spacing: 2px;
+  
+  /* Spacing below */
+  margin-bottom: var(--spacing-md);
+  
+  /* Subtle text shadow for depth */
+  text-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+  
+  /* Transform for emphasis */
+  text-transform: uppercase;
+}
+
+/* Hero Subtitle Styles */
+.hero-subtitle {
+  /* Medium size */
+  font-size: var(--font-size-lg);
+  font-weight: 400;
+  
+  /* Accent color for emphasis */
+  color: var(--color-accent-primary);
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-sm);
+  
+  /* Subtle letter spacing */
+  letter-spacing: 0.5px;
+}
+
+/* Hero Description Styles */
+.hero-description {
+  /* Normal size */
+  font-size: var(--font-size-md);
+  
+  /* Secondary text color */
+  color: var(--color-text-secondary);
+  
+  /* Spacing below */
+  margin-bottom: var(--spacing-lg);
+  
+  /* Line height for readability */
+  line-height: 1.8;
+}
+
+/* Action Buttons Container */
+.hero-actions {
+  /* Center buttons horizontally */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-md);
+  
+  /* Flex wrap for mobile */
+  flex-wrap: wrap;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablets and smaller */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: var(--font-size-2xl);
+    letter-spacing: 1px;
+  }
+  
+  .hero-subtitle {
+    font-size: var(--font-size-md);
+  }
+  
+  .hero-description {
+    font-size: var(--font-size-sm);
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .hero-actions .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .hero {
+    padding: var(--spacing-md) 0;
+  }
+  
+  .hero-content {
+    padding: var(--spacing-md) 0;
+  }
+  
+  .hero-title {
+    font-size: var(--font-size-xl);
+  }
+}

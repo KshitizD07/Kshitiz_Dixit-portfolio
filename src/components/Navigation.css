@@ -1,0 +1,193 @@
+/* ============================================
+   NAVIGATION STYLES
+   Fixed navigation bar with smooth animations
+   ============================================ */
+
+.navigation {
+  /* Fixed positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  
+  /* Background with backdrop blur */
+  background-color: rgba(10, 10, 15, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  /* Border */
+  border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+  
+  /* Smooth transitions */
+  transform: translateY(0);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hide navigation when scrolling down */
+.navigation.hidden {
+  transform: translateY(-100%);
+}
+
+/* Show navigation when scrolling up */
+.navigation.visible {
+  transform: translateY(0);
+}
+
+/* Navigation Container */
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  height: 70px;
+}
+
+/* ============================================
+   BRAND/LOGO
+   ============================================ */
+
+.nav-brand {
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.brand-text {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-accent-primary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  
+  /* Glow effect */
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+  transition: all var(--transition-fast);
+}
+
+.nav-brand:hover .brand-text {
+  color: var(--color-text-primary);
+  text-shadow: 0 0 30px rgba(0, 240, 255, 0.6);
+}
+
+/* ============================================
+   NAVIGATION LINKS
+   ============================================ */
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: var(--spacing-sm);
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  /* No additional styling needed */
+}
+
+.nav-link {
+  /* Reset button styles */
+  background: none;
+  border: none;
+  cursor: pointer;
+  
+  /* Typography */
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.5px;
+  
+  /* Spacing */
+  padding: 8px 16px;
+  
+  /* Position relative for underline effect */
+  position: relative;
+  
+  /* Transitions */
+  transition: color var(--transition-fast);
+}
+
+/* Hover effect */
+.nav-link:hover {
+  color: var(--color-accent-primary);
+}
+
+/* Active link */
+.nav-link.active {
+  color: var(--color-accent-primary);
+}
+
+/* Underline effect */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent-primary);
+  transition: width var(--transition-normal);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 80%;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .nav-container {
+    height: 60px;
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .brand-text {
+    font-size: var(--font-size-md);
+  }
+  
+  .nav-links {
+    gap: 4px;
+  }
+  
+  .nav-link {
+    font-size: var(--font-size-xs);
+    padding: 6px 10px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .nav-container {
+    height: 50px;
+  }
+  
+  .brand-text {
+    font-size: var(--font-size-sm);
+  }
+  
+  /* Hide some nav items on very small screens */
+  .nav-links {
+    gap: 2px;
+  }
+  
+  .nav-link {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+  
+  /* Optionally hide middle links on very small screens */
+  .nav-item:nth-child(n+3):nth-child(-n+5) {
+    display: none;
+  }
+}

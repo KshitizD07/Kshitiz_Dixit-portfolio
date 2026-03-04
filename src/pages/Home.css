@@ -1,0 +1,14 @@
+/* ============================================
+   HOME PAGE STYLES
+   ============================================ */
+
+.home {
+  /* Full width layout */
+  width: 100%;
+  
+  /* Stack sections vertically */
+  display: flex;
+  flex-direction: column;
+  
+  /* Smooth scroll behavior handled by global styles */
+}

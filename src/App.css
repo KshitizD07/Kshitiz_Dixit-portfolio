@@ -1,0 +1,18 @@
+/* ============================================
+   APP COMPONENT STYLES
+   ============================================ */
+
+.app {
+  /* App container takes full viewport */
+  width: 100%;
+  min-height: 100vh;
+  
+  /* Dark cosmic background */
+  background-color: var(--color-bg-primary);
+  
+  /* Prevents horizontal overflow */
+  overflow-x: hidden;
+  
+  /* Smooth transitions for theme changes (future) */
+  transition: background-color var(--transition-slow);
+}

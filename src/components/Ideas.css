@@ -1,0 +1,261 @@
+/* ============================================
+   IDEAS SECTION STYLES
+   Minimal, contemplative design
+   ============================================ */
+
+.ideas {
+  /* Content-based height, reduced padding */
+  padding: var(--spacing-lg) 0;
+  
+  /* Slightly different background */
+  background-color: var(--color-bg-secondary);
+  
+  /* Position relative for future floating effects */
+  position: relative;
+}
+
+/* Section Header */
+.ideas-header {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Ideas Content Container */
+.ideas-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* Subsection Title */
+.subsection-title {
+  font-size: var(--font-size-lg);
+  color: var(--color-accent-primary);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* ============================================
+   THOUGHTS SECTION
+   ============================================ */
+
+.thoughts-section {
+  padding: var(--spacing-lg) 0;
+}
+
+.thoughts-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Individual thought fragment */
+.thought-fragment {
+  /* Minimal card */
+  padding: var(--spacing-md);
+  background-color: rgba(0, 240, 255, 0.02);
+  border-left: 2px solid var(--color-accent-primary);
+  border-radius: var(--border-radius);
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  
+  /* Transitions */
+  transition: all var(--transition-normal);
+  
+  /* Position relative for effects */
+  position: relative;
+}
+
+/* Hover effect */
+.thought-fragment:hover {
+  background-color: rgba(0, 240, 255, 0.05);
+  transform: translateX(10px);
+  border-left-width: 4px;
+}
+
+/* Decorative dot */
+.fragment-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-accent-primary);
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: all var(--transition-normal);
+}
+
+.thought-fragment:hover .fragment-dot {
+  opacity: 1;
+  box-shadow: 0 0 12px var(--color-accent-primary);
+}
+
+.thought-text {
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
+  font-style: italic;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ============================================
+   DIVIDER
+   ============================================ */
+
+.ideas-divider {
+  width: 60%;
+  height: 1px;
+  margin: var(--spacing-lg) auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-accent-secondary),
+    transparent
+  );
+  opacity: 0.3;
+}
+
+/* ============================================
+   INTERESTS SECTION
+   ============================================ */
+
+.interests-section {
+  padding: var(--spacing-lg) 0;
+}
+
+.interests-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Interest tags */
+.interest-tag {
+  /* Minimal pill design */
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: rgba(122, 0, 255, 0.08);
+  border: 1px solid rgba(122, 0, 255, 0.3);
+  border-radius: 20px;
+  
+  /* Typography */
+  font-size: var(--font-size-sm);
+  color: var(--color-accent-secondary);
+  font-weight: 500;
+  
+  /* Transitions */
+  transition: all var(--transition-normal);
+  cursor: default;
+}
+
+/* Hover effect */
+.interest-tag:hover {
+  background-color: rgba(122, 0, 255, 0.15);
+  border-color: var(--color-accent-secondary);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(122, 0, 255, 0.2);
+}
+
+/* ============================================
+   CLOSING STATEMENT
+   ============================================ */
+
+.ideas-closing {
+  text-align: center;
+  padding: var(--spacing-lg);
+  margin-top: var(--spacing-md);
+  background-color: rgba(0, 240, 255, 0.02);
+  border-top: 1px solid rgba(0, 240, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+}
+
+.closing-text {
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
+  line-height: 1.8;
+  font-style: italic;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .ideas {
+    padding: var(--spacing-lg) 0;
+  }
+  
+  .ideas-content {
+    gap: var(--spacing-lg);
+  }
+  
+  .thoughts-section,
+  .interests-section {
+    padding: var(--spacing-md) 0;
+  }
+  
+  .subsection-title {
+    font-size: var(--font-size-md);
+  }
+  
+  .thought-text {
+    font-size: var(--font-size-sm);
+  }
+  
+  .interest-tag {
+    padding: 8px 16px;
+    font-size: var(--font-size-xs);
+  }
+  
+  .closing-text {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .thoughts-grid {
+    gap: var(--spacing-sm);
+  }
+  
+  .thought-fragment {
+    padding: var(--spacing-sm);
+  }
+  
+  .thought-fragment:hover {
+    transform: translateX(5px);
+  }
+  
+  .fragment-dot {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .interests-cloud {
+    gap: 8px;
+  }
+  
+  .interest-tag {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+  
+  .ideas-closing {
+    padding: var(--spacing-md);
+  }
+}
