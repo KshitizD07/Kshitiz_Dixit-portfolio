@@ -1,8 +1,13 @@
+/* ============================================
+   ENHANCED TREE ALGORITHM
+   Better structure, natural branching, realistic proportions
+   ============================================ */
+
 export function generateTreeTargets(targetCount) {
   const positions = new Float32Array(targetCount * 3);
   const colors = new Float32Array(targetCount * 3);
   let currentIndex = 0;
-
+  
   function addPoint(x, y, z, r, g, b) {
     if (currentIndex >= targetCount * 3) return false;
     positions[currentIndex] = x;
@@ -16,93 +21,162 @@ export function generateTreeTargets(targetCount) {
     currentIndex += 3;
     return true;
   }
-
-  // 1. WIDER, MORE MASSIVE TRUNK
-  const trunkCount = Math.floor(targetCount * 0.15);
+  
+  // ============================================
+  // 1. TRUNK - Tall, thick, tapered trunk
+  // ============================================
+  const trunkCount = Math.floor(targetCount * 0.18); // 18% for trunk
   for (let i = 0; i < trunkCount; i++) {
-    const h = i / trunkCount;
-    const y = -6 + h * 9; 
+    const h = i / trunkCount; // 0 to 1 from bottom to top
+    const y = -7 + h * 10; // Height from -7 to 3
     
-    // Increased the base radius multiplier from 1.2 to 2.5 for a massive, grounded trunk
-    const radius = 2.5 * Math.pow(1 - h, 1.5) + 0.4; 
-    const angle = Math.random() * Math.PI * 2;
+    // Trunk radius - thick at base, thin at top
+    const baseRadius = 1.8;
+    const topRadius = 0.3;
+    const radius = baseRadius * (1 - h) + topRadius * h;
     
-    const twist = h * Math.PI * 2;
-    const x = Math.cos(angle + twist) * radius;
-    const z = Math.sin(angle + twist) * radius;
-
-    const shade = 0.1 + Math.random() * 0.15;
-    addPoint(x, y, z, shade + 0.1, shade * 0.7, shade * 0.4); 
+    // Add slight twist for natural look
+    const twist = h * Math.PI * 0.5;
+    const angle = Math.random() * Math.PI * 2 + twist;
+    
+    const x = Math.cos(angle) * radius * (0.8 + Math.random() * 0.4);
+    const z = Math.sin(angle) * radius * (0.8 + Math.random() * 0.4);
+    
+    // Bark color - dark brown with variation
+    const shade = 0.08 + Math.random() * 0.12;
+    addPoint(x, y, z, shade + 0.05, shade * 0.6, shade * 0.3);
   }
-
-  // 2. WIDER REACHING BRANCHES
+  
+  // ============================================
+  // 2. MAJOR BRANCHES - Primary branch structure
+  // ============================================
   const branchEndpoints = [];
-  const numBranches = 16; 
-  const branchCount = Math.floor(targetCount * 0.15);
-  const pointsPerBranch = Math.floor(branchCount / numBranches);
-
-  for (let b = 0; b < numBranches; b++) {
-    const branchAngle = (b / numBranches) * Math.PI * 2 + (Math.random() - 0.5);
-    const branchPitch = 0.3 + Math.random() * 0.4; // Flatter angle pushes them wider
+  const numMajorBranches = 8; // Fewer but stronger branches
+  const majorBranchCount = Math.floor(targetCount * 0.12);
+  const pointsPerMajorBranch = Math.floor(majorBranchCount / numMajorBranches);
+  
+  for (let b = 0; b < numMajorBranches; b++) {
+    // Spiral distribution around trunk
+    const branchAngle = (b / numMajorBranches) * Math.PI * 2 + Math.random() * 0.3;
+    const branchHeight = 0.5 + (b / numMajorBranches) * 2; // Spread vertically
     
-    // Increased branch length from 5 to 8 for a huge canopy spread
-    const branchLength = 6 + Math.random() * 5;
-
-    const startY = 0 + Math.random() * 3;
-    const startX = 0; 
-    const startZ = 0;
-
-    const endX = startX + Math.cos(branchAngle) * Math.sin(branchPitch) * branchLength;
-    const endY = startY + Math.cos(branchPitch) * branchLength;
-    const endZ = startZ + Math.sin(branchAngle) * Math.sin(branchPitch) * branchLength;
-
-    branchEndpoints.push({ x: endX, y: endY, z: endZ });
-
-    for (let i = 0; i < pointsPerBranch; i++) {
-      const t = i / pointsPerBranch;
-      const arch = Math.sin(t * Math.PI) * 2.0; // Higher arch
-      const px = startX + (endX - startX) * t;
+    // Branch grows outward and upward
+    const pitch = 0.4 + Math.random() * 0.3; // Angle from horizontal
+    const length = 4 + Math.random() * 2.5;
+    
+    const startX = Math.cos(branchAngle) * 0.5;
+    const startY = branchHeight;
+    const startZ = Math.sin(branchAngle) * 0.5;
+    
+    const endX = startX + Math.cos(branchAngle) * Math.sin(pitch) * length;
+    const endY = startY + Math.cos(pitch) * length * 0.8;
+    const endZ = startZ + Math.sin(branchAngle) * Math.sin(pitch) * length;
+    
+    branchEndpoints.push({ x: endX, y: endY, z: endZ, angle: branchAngle });
+    
+    // Create branch with tapering
+    for (let i = 0; i < pointsPerMajorBranch; i++) {
+      const t = i / pointsPerMajorBranch;
+      
+      // Natural curve - arch upward
+      const arch = Math.sin(t * Math.PI) * 1.5;
+      
+      // Taper the branch
+      const branchRadius = 0.25 * (1 - t * 0.7);
+      const radialOffset = (Math.random() - 0.5) * branchRadius;
+      
+      const px = startX + (endX - startX) * t + radialOffset;
       const py = startY + (endY - startY) * t + arch;
-      const pz = startZ + (endZ - startZ) * t;
-
-      const shade = 0.1 + Math.random() * 0.1;
-      addPoint(px, py, pz, shade + 0.1, shade * 0.6, shade * 0.3);
+      const pz = startZ + (endZ - startZ) * t + radialOffset;
+      
+      // Branch color - slightly lighter than trunk
+      const shade = 0.12 + Math.random() * 0.08;
+      addPoint(px, py, pz, shade + 0.08, shade * 0.65, shade * 0.35);
     }
   }
-
-  // 3. THICKER, CLUSTERED LEAVES
-  const vineCount = targetCount - (trunkCount + branchCount);
-  const numVines = 180; 
-  const pointsPerVine = Math.floor(vineCount / numVines);
-
-  for (let v = 0; v < numVines; v++) {
-    const endpoint = branchEndpoints[Math.floor(Math.random() * branchEndpoints.length)];
-    const startX = endpoint.x + (Math.random() - 0.5) * 4;
-    const startY = endpoint.y + (Math.random() - 0.5) * 2;
-    const startZ = endpoint.z + (Math.random() - 0.5) * 4;
-
-    const distFromCenter = Math.sqrt(startX * startX + startZ * startZ);
-    const vineLength = 4 + Math.random() * 5 + (distFromCenter * 0.2);
-
-    for (let i = 0; i < pointsPerVine; i++) {
-      const t = i / pointsPerVine; 
+  
+  // ============================================
+  // 3. SECONDARY BRANCHES - Smaller branches from main branches
+  // ============================================
+  const secondaryBranchCount = Math.floor(targetCount * 0.15);
+  const numSecondaryBranches = 24;
+  const pointsPerSecondary = Math.floor(secondaryBranchCount / numSecondaryBranches);
+  
+  for (let s = 0; s < numSecondaryBranches; s++) {
+    // Pick a random major branch endpoint
+    const parent = branchEndpoints[Math.floor(Math.random() * branchEndpoints.length)];
+    
+    // Secondary branch grows from parent
+    const subAngle = parent.angle + (Math.random() - 0.5) * Math.PI;
+    const subLength = 2 + Math.random() * 1.5;
+    const subPitch = 0.3 + Math.random() * 0.4;
+    
+    const startX = parent.x + (Math.random() - 0.5);
+    const startY = parent.y - Math.random() * 0.5;
+    const startZ = parent.z + (Math.random() - 0.5);
+    
+    const endX = startX + Math.cos(subAngle) * Math.sin(subPitch) * subLength;
+    const endY = startY + Math.cos(subPitch) * subLength * 0.6;
+    const endZ = startZ + Math.sin(subAngle) * Math.sin(subPitch) * subLength;
+    
+    for (let i = 0; i < pointsPerSecondary; i++) {
+      const t = i / pointsPerSecondary;
       
-      // Increased the scatter (from 0.2 to 1.5) so the leaves cluster thickly around the vine
-      const px = startX + (Math.random() - 0.5) * 1.5; 
-      const py = startY - (vineLength * t) + (Math.random() - 0.5) * 0.5; 
-      const pz = startZ + (Math.random() - 0.5) * 1.5;
-
-      const isTip = t > 0.85;
-      if (isTip && Math.random() > 0.6) {
-        addPoint(px, py, pz, 0.0, 0.85, 0.95); 
+      const px = startX + (endX - startX) * t + (Math.random() - 0.5) * 0.2;
+      const py = startY + (endY - startY) * t;
+      const pz = startZ + (endZ - startZ) * t + (Math.random() - 0.5) * 0.2;
+      
+      const shade = 0.15 + Math.random() * 0.08;
+      addPoint(px, py, pz, shade, shade * 0.6, shade * 0.3);
+    }
+  }
+  
+  // ============================================
+  // 4. LEAF CLUSTERS - Dense foliage
+  // ============================================
+  const leafCount = targetCount - (trunkCount + majorBranchCount + secondaryBranchCount);
+  const numLeafClusters = 120; // Many clusters
+  const leavesPerCluster = Math.floor(leafCount / numLeafClusters);
+  
+  for (let c = 0; c < numLeafClusters; c++) {
+    // Leaves cluster around branch endpoints
+    const endpoint = branchEndpoints[Math.floor(Math.random() * branchEndpoints.length)];
+    
+    // Cluster center with some spread
+    const clusterX = endpoint.x + (Math.random() - 0.5) * 3;
+    const clusterY = endpoint.y + (Math.random() - 0.5) * 2;
+    const clusterZ = endpoint.z + (Math.random() - 0.5) * 3;
+    
+    // Cluster size varies
+    const clusterSize = 0.8 + Math.random() * 1.2;
+    
+    for (let i = 0; i < leavesPerCluster; i++) {
+      // Spherical distribution around cluster center
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);
+      const r = Math.random() * clusterSize;
+      
+      const px = clusterX + r * Math.sin(phi) * Math.cos(theta);
+      const py = clusterY + r * Math.sin(phi) * Math.sin(theta);
+      const pz = clusterZ + r * Math.cos(phi);
+      
+      // Leaf color - vibrant greens with variation
+      const isFlower = Math.random() > 0.92; // 8% flowers
+      
+      if (isFlower) {
+        // Bright cyan/blue flowers
+        addPoint(px, py, pz, 0.1, 0.7, 0.95);
       } else {
-        const rCol = 0.05 + (t * 0.1);
-        const gCol = 0.25 + (t * 0.5) + Math.random() * 0.2; 
-        const bCol = 0.1 + (t * 0.2);
+        // Various shades of green
+        const lightness = Math.random();
+        const rCol = 0.08 + lightness * 0.15;
+        const gCol = 0.35 + lightness * 0.45;
+        const bCol = 0.12 + lightness * 0.20;
         addPoint(px, py, pz, rCol, gCol, bCol);
       }
     }
   }
-
+  
+  console.log(`🌳 Enhanced tree generated with ${Math.floor(currentIndex / 3)} particles`);
   return { positions, colors };
 }
