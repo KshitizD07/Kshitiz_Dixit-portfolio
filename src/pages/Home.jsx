@@ -1,12 +1,11 @@
 /* ============================================
    COSMIC PORTFOLIO - HOME PAGE
    Phase 1: All sections in one page
-   Phase 3: Added 3D starfield background
    ============================================ */
 
 import React from 'react';
-import Background3D from '../scenes/Background3D'; // ← ADD THIS LINE
 import Navigation from '../components/Navigation';
+//import Starfield from '../scenes/Starfield';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Projects from '../components/Projects';
@@ -31,16 +30,13 @@ import './Home.css';
  * 6. Ideas - Intellectual curiosity
  * 7. Contact - Connection points
  * 
- * Phase 3 Addition:
- * - Background3D component renders WebGL starfield
- * - Fixed position, stays behind all content
- * - Slow cosmic drift animation
+ * NOTE: Components are being added one by one during development
  */
 function Home() {
   return (
     <main className="home">
-      {/* Phase 3: 3D Starfield Background */}
-      <Background3D /> {/* ← ADD THIS LINE */}
+      {/* Three.js Starfield Background */}
+      {/* <Starfield /> */}
       
       {/* Fixed Navigation Bar */}
       <Navigation />

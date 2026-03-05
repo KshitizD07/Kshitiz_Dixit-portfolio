@@ -1,0 +1,30 @@
+/* ============================================
+   STARFIELD CONTAINER STYLES
+   ============================================ */
+
+.starfield-container {
+  /* Fixed position behind all content */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  
+  /* Prevent interaction */
+  pointer-events: none;
+  
+  /* Ensure it's behind everything */
+  isolation: isolate;
+}
+
+/* Make sure all other content appears above starfield */
+.home > section {
+  position: relative;
+  z-index: 10;
+}
+
+/* Ensure navigation is above everything */
+.navigation {
+  z-index: 1000 !important;
+}

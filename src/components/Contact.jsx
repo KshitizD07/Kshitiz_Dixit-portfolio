@@ -30,8 +30,8 @@ function Contact() {
   // Contact information - update with your actual details
   const contactInfo = {
     email: "kshitizd777@gmail.com",
-    github: "https://github.com/yourusername",
-    linkedin: "https://linkedin.com/in/yourusername",
+    github: "https://github.com/KshitizD07",
+    linkedin: "https://www.linkedin.com/in/kshitiz-dixit",
     // Optional additional links:
     // twitter: "https://twitter.com/yourusername",
     // website: "https://yourwebsite.com",

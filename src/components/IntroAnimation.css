@@ -1,0 +1,135 @@
+/* ============================================
+   INTRO ANIMATION STYLES
+   Big Bang effect overlay
+   ============================================ */
+
+.intro-animation {
+  /* Full screen overlay */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999; /* Above everything */
+  
+  /* Dark background */
+  background-color: var(--color-bg-primary);
+  
+  /* Pointer events enabled (for skip button) */
+  pointer-events: all;
+  
+  /* Smooth fade out when complete */
+  opacity: 1;
+  transition: opacity 0.8s ease-out;
+}
+
+/* When animation is complete, fade out */
+.intro-animation.complete {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Canvas element */
+.intro-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ============================================
+   SKIP BUTTON
+   ============================================ */
+
+.skip-button {
+  /* Position */
+  position: absolute;
+  bottom: var(--spacing-lg);
+  right: var(--spacing-lg);
+  
+  /* Styling */
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: rgba(0, 240, 255, 0.1);
+  border: 1px solid var(--color-accent-primary);
+  border-radius: var(--border-radius);
+  
+  /* Typography */
+  color: var(--color-accent-primary);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  
+  /* Cursor */
+  cursor: pointer;
+  
+  /* Transitions */
+  transition: all var(--transition-normal);
+  
+  /* Ensure it's clickable */
+  z-index: 10000;
+}
+
+.skip-button:hover {
+  background-color: var(--color-accent-primary);
+  color: var(--color-bg-primary);
+  box-shadow: var(--glow-strong);
+  transform: translateY(-2px);
+}
+
+.skip-button:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   LOADING TEXT
+   ============================================ */
+
+.intro-text {
+  /* Center on screen */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  /* Typography */
+  text-align: center;
+  color: var(--color-text-primary);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  
+  /* Animation */
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Mobile */
+@media (max-width: 768px) {
+  .skip-button {
+    bottom: var(--spacing-md);
+    right: var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-xs);
+  }
+  
+  .intro-text {
+    font-size: var(--font-size-md);
+  }
+}
