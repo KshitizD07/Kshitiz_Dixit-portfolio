@@ -6,79 +6,90 @@
 import React from 'react';
 import './Research.css';
 
-/**
- * Research Component
- * 
- * Purpose: Demonstrate intellectual exploration and experimental work
- * This is where topics like agentic AI workflows, system design experiments,
- * and conceptual explorations can appear.
- * 
- * Contains:
- * - Research entries in terminal-style cards
- * - Each entry shows: problem, approach, observations, future ideas
- * 
- * In later phases:
- * - Terminal-style blinking cursor effect
- * - Cards can collapse into particles during transitions
- * 
- * Design note: More experimental/informal than Projects section
- */
 function Research() {
   
-  // Research entries - easily add/modify explorations
+  // 1. COMPLETELY DYNAMIC DATA STRUCTURE
+  // You can now add, remove, or rename ANY section. 
+  // - If 'content' is a string, it renders a paragraph.
+  // - If 'content' is an array [...], it renders a bulleted list.
   const researchEntries = [
     {
       id: 1,
       title: "Designing a Structured Agentic Development Workflow",
-      problem: "Agentic coding tools often create uncontrolled code generation when used without constraints. Autonomous prompts can degrade architecture over time.",
-      approach: "Experimented with structured workflows using AI coding assistants. Breaking tasks into narrow, focused prompts. Maintaining human control over architectural decisions while delegating implementation details.",
-      observations: [
-        "Smaller iterative prompts produce better structured code",
-        "Autonomous large prompts often degrade architecture",
-        "Clear constraints improve AI output quality",
-        "Human-in-the-loop validation prevents drift"
-      ],
-      futureIdeas: [
-        "Design prompt pipelines for complex tasks",
-        "Introduce validation loops at each stage",
-        "Build architecture guardrails",
-        "Create reusable prompt templates"
+      sections: [
+        {
+          title: "Problem",
+          content: "Agentic coding tools can generate large amounts of code quickly, but without constraints they often produce unstructured or drifting architectures. Autonomous prompts may degrade code quality and consistency over time."
+        },
+        {
+          title: "Approach",
+          content: "Designed a structured AI-assisted workflow that constrains agent behavior through task boundaries, project context, and human approval checkpoints. Tested using \"Aider\" as the execution interface while maintaining human control over architectural decisions."
+        },
+        {
+          title: "Workflow", // Changed from Observations
+          content: [
+            "Smaller iterative prompts produce better structured code",
+            "Autonomous large prompts often degrade architecture",
+            "Clear constraints improve AI output quality",
+            "Human-in-the-loop validation prevents drift"
+          ]
+        }
+        // Notice: No Future Ideas here! The code will just skip it seamlessly.
       ]
     },
     {
       id: 2,
       title: "Exploring Emergence in Cellular Automata",
-      problem: "How do complex patterns emerge from simple local rules? Can we predict emergent behavior from rule specifications?",
-      approach: "Implemented various cellular automata systems (Conway's Game of Life, Rule 30, etc.). Analyzed pattern formation, stability, and chaos across different rule sets.",
-      observations: [
-        "Simple rules can produce incredibly complex behavior",
-        "Some rules lead to stable patterns, others to chaos",
-        "Edge cases often reveal unexpected emergent properties",
-        "Initial conditions dramatically affect outcomes"
-      ],
-      futureIdeas: [
-        "Apply ML to predict emergent patterns",
-        "Design custom rule sets for specific behaviors",
-        "Explore 3D cellular automata",
-        "Investigate applications in procedural generation"
+      sections: [
+        {
+          title: "Core Question", // Custom title!
+          content: "How do complex patterns emerge from simple local rules? Can we predict emergent behavior from rule specifications?"
+        },
+        {
+          title: "Approach",
+          content: "Implemented various cellular automata systems (Conway's Game of Life, Rule 30, etc.). Analyzed pattern formation, stability, and chaos across different rule sets."
+        },
+        {
+          title: "Observations",
+          content: [
+            "Simple rules can produce incredibly complex behavior",
+            "Some rules lead to stable patterns, others to chaos",
+            "Edge cases often reveal unexpected emergent properties",
+            "Initial conditions dramatically affect outcomes"
+          ]
+        },
+        {
+          title: "Future Ideas",
+          content: [
+            "Apply ML to predict emergent patterns",
+            "Design custom rule sets for specific behaviors",
+            "Explore 3D cellular automata",
+            "Investigate applications in procedural generation"
+          ]
+        }
       ]
     },
     {
       id: 3,
       title: "Reinforcement Learning in Simple Environments",
-      problem: "Understanding how RL agents learn optimal policies through trial and error. What factors influence learning speed and stability?",
-      approach: "Built simple grid-world environments. Implemented Q-learning and policy gradient methods. Experimented with reward shaping and exploration strategies.",
-      observations: [
-        "Reward design critically impacts learning",
-        "Exploration vs exploitation tradeoff is crucial",
-        "Simple environments reveal fundamental principles",
-        "Hyperparameters significantly affect convergence"
-      ],
-      futureIdeas: [
-        "Test on more complex environments",
-        "Implement curiosity-driven exploration",
-        "Compare different RL algorithms",
-        "Visualize learned policies"
+      sections: [
+        {
+          title: "Problem",
+          content: "Understanding how RL agents learn optimal policies through trial and error. What factors influence learning speed and stability?"
+        },
+        {
+          title: "Methodology", // Another custom title
+          content: "Built simple grid-world environments. Implemented Q-learning and policy gradient methods. Experimented with reward shaping and exploration strategies."
+        },
+        {
+          title: "Key Takeaways",
+          content: [
+            "Reward design critically impacts learning",
+            "Exploration vs exploitation tradeoff is crucial",
+            "Simple environments reveal fundamental principles",
+            "Hyperparameters significantly affect convergence"
+          ]
+        }
       ]
     }
   ];
@@ -108,51 +119,31 @@ function Research() {
                 <h3 className="entry-title">{entry.title}</h3>
               </div>
               
-              {/* Problem Section */}
-              <div className="entry-section">
-                <h4 className="entry-label">
-                  <span className="label-icon">▹</span> Problem
-                </h4>
-                <p className="entry-text">{entry.problem}</p>
-              </div>
-              
-              {/* Approach Section */}
-              <div className="entry-section">
-                <h4 className="entry-label">
-                  <span className="label-icon">▹</span> Approach
-                </h4>
-                <p className="entry-text">{entry.approach}</p>
-              </div>
-              
-              {/* Observations Section */}
-              <div className="entry-section">
-                <h4 className="entry-label">
-                  <span className="label-icon">▹</span> Observations
-                </h4>
-                <ul className="entry-list">
-                  {entry.observations.map((obs, index) => (
-                    <li key={index} className="list-item">{obs}</li>
-                  ))}
-                </ul>
-              </div>
-              
-              {/* Future Ideas Section */}
-              <div className="entry-section">
-                <h4 className="entry-label">
-                  <span className="label-icon">▹</span> Future Ideas
-                </h4>
-                <ul className="entry-list">
-                  {entry.futureIdeas.map((idea, index) => (
-                    <li key={index} className="list-item future-idea">{idea}</li>
-                  ))}
-                </ul>
-              </div>
+              {/* 2. DYNAMIC RENDERING ENGINE */}
+              {/* This loops through whatever sections you defined above and renders them automatically */}
+              {entry.sections.map((section, index) => (
+                <div key={index} className="entry-section">
+                  <h4 className="entry-label">
+                    <span className="label-icon">▹</span> {section.title}
+                  </h4>
+                  
+                  {/* Check if the content is an array (list) or a string (paragraph) */}
+                  {Array.isArray(section.content) ? (
+                    <ul className="entry-list">
+                      {section.content.map((item, i) => (
+                        <li key={i} className="list-item">{item}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="entry-text">{section.content}</p>
+                  )}
+                </div>
+              ))}
               
             </div>
           ))}
           
         </div>
-        
       </div>
     </section>
   );
