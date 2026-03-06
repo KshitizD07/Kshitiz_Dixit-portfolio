@@ -1,7 +1,6 @@
 import { useRef, useMemo, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { Html } from '@react-three/drei';
 import { generateTreeTargets } from '../three/treeAlgorithm';
 
 const tempVec = new THREE.Vector3();
@@ -50,6 +49,7 @@ export default function BigBangTree({ count = 10000, onAnimationComplete }) {
   const velocitiesRef = useRef(initialData.velocities);
 
   const handleSkip = () => {
+    console.log('⏭️ Skip button clicked!');
     setPhase('scroll_growth');
     setShowSkipButton(false);
     if (pointsRef.current) {
@@ -59,7 +59,9 @@ export default function BigBangTree({ count = 10000, onAnimationComplete }) {
         posAttribute.array[i3] = (Math.random() - 0.5) * 5;
         posAttribute.array[i3 + 1] = -8;
         posAttribute.array[i3 + 2] = (Math.random() - 0.5) * 5;
-        velocitiesRef.current[i3] = 0; velocitiesRef.current[i3 + 1] = 0; velocitiesRef.current[i3 + 2] = 0;
+        velocitiesRef.current[i3] = 0; 
+        velocitiesRef.current[i3 + 1] = 0; 
+        velocitiesRef.current[i3 + 2] = 0;
       }
       posAttribute.needsUpdate = true;
     }
@@ -94,11 +96,14 @@ export default function BigBangTree({ count = 10000, onAnimationComplete }) {
         posAttribute.array[i3 + 1] += velocities[i3 + 1];
         posAttribute.array[i3 + 2] += velocities[i3 + 2];
         velocities[i3 + 1] -= 0.003; 
-        velocities[i3] *= 0.985; velocities[i3 + 2] *= 0.985;  
+        velocities[i3] *= 0.985; 
+        velocities[i3 + 2] *= 0.985;  
 
         if (posAttribute.array[i3 + 1] < -8) {
           posAttribute.array[i3 + 1] = -8;
-          velocities[i3 + 1] *= -0.3; velocities[i3] *= 0.85; velocities[i3 + 2] *= 0.85;
+          velocities[i3 + 1] *= -0.3; 
+          velocities[i3] *= 0.85; 
+          velocities[i3 + 2] *= 0.85;
         }
         if (Math.abs(velocities[i3 + 1]) > 0.02) movingParticles++;
       }
@@ -160,33 +165,87 @@ export default function BigBangTree({ count = 10000, onAnimationComplete }) {
   });
 
   return (
+    <points ref={pointsRef} position={[0, -2, -6]} scale={[1.1, 1.1, 1.1]}>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" count={count} array={initialData.positions} itemSize={3} />
+        <bufferAttribute attach="attributes-color" count={count} array={initialData.colors} itemSize={3} />
+      </bufferGeometry>
+      <pointsMaterial 
+        size={0.18} 
+        map={leafTexture}    
+        alphaTest={0.05}     
+        vertexColors={true} 
+        transparent={true} 
+        opacity={0.9} 
+        depthWrite={false}
+        blending={THREE.AdditiveBlending} 
+      />
+    </points>
+  );
+}
+
+// Export a wrapper component that handles the skip button in DOM
+export function BigBangTreeWithButton(props) {
+  const [showSkipButton, setShowSkipButton] = useState(true);
+  const [phase, setPhase] = useState('explosion');
+
+  const handleSkip = () => {
+    console.log('⏭️ Skip clicked from wrapper!');
+    setShowSkipButton(false);
+    setPhase('scroll_growth');
+    if (props.onAnimationComplete) {
+      props.onAnimationComplete();
+    }
+  };
+
+  return (
     <>
+      {/* Skip button rendered in regular DOM (not Three.js) */}
       {showSkipButton && phase === 'explosion' && (
-        <Html fullscreen style={{ pointerEvents: 'none' }}>
-          <div style={{ position: 'absolute', bottom: '2rem', right: '2rem', zIndex: 10000, pointerEvents: 'all' }}>
-            <button onClick={handleSkip} style={{ padding: '0.75rem 1.5rem', backgroundColor: 'rgba(0, 240, 255, 0.1)', border: '1px solid #00F0FF', borderRadius: '4px', color: '#00F0FF', fontFamily: 'var(--font-body)', fontSize: '0.875rem', fontWeight: '500', letterSpacing: '0.5px', textTransform: 'uppercase', cursor: 'pointer', transition: 'all 0.3s ease', backdropFilter: 'blur(10px)' }}>
-              Skip Animation →
-            </button>
-          </div>
-        </Html>
+        <div style={{
+          position: 'fixed',
+          bottom: '2rem',
+          right: '2rem',
+          zIndex: 10000,
+          pointerEvents: 'all'
+        }}>
+          <button
+            onClick={handleSkip}
+            style={{
+              padding: '0.75rem 1.5rem',
+              backgroundColor: 'rgba(0, 240, 255, 0.1)',
+              border: '1px solid #00F0FF',
+              borderRadius: '4px',
+              color: '#00F0FF',
+              fontFamily: 'var(--font-body)',
+              fontSize: '0.875rem',
+              fontWeight: '500',
+              letterSpacing: '0.5px',
+              textTransform: 'uppercase',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              backdropFilter: 'blur(10px)'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = '#00F0FF';
+              e.target.style.color = '#0A0A0F';
+              e.target.style.transform = 'translateY(-2px)';
+              e.target.style.boxShadow = '0 0 30px rgba(0, 240, 255, 0.3)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = 'rgba(0, 240, 255, 0.1)';
+              e.target.style.color = '#00F0FF';
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = 'none';
+            }}
+          >
+            Skip Animation →
+          </button>
+        </div>
       )}
 
-      <points ref={pointsRef} position={[0, -2, -6]} scale={[1.1, 1.1, 1.1]}>
-        <bufferGeometry>
-          <bufferAttribute attach="attributes-position" count={count} array={initialData.positions} itemSize={3} />
-          <bufferAttribute attach="attributes-color" count={count} array={initialData.colors} itemSize={3} />
-        </bufferGeometry>
-        <pointsMaterial 
-          size={0.18} 
-          map={leafTexture}    
-          alphaTest={0.05}     
-          vertexColors={true} 
-          transparent={true} 
-          opacity={0.9} 
-          depthWrite={false}
-          blending={THREE.AdditiveBlending} 
-        />
-      </points>
+      {/* Tree component */}
+      <BigBangTree {...props} />
     </>
   );
 }

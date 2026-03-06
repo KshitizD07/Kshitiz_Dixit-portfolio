@@ -6,44 +6,23 @@
 import React from 'react';
 import './About.css';
 
-/**
- * About Component
- * 
- * Purpose: Explain motivation and intellectual interests
- * Focus on thinking and curiosity, not just biography
- * 
- * Contains:
- * - Section header
- * - Interest areas
- * - Narrative about your curiosity and approach
- * 
- * In later phases:
- * - Animated constellation lines in background
- * - Lines slowly connect and disconnect
- * - Represents ideas forming connections
- */
+
 function About() {
   return (
     <section className="about section" id="about">
       <div className="container">
-        
-        {/* Section Header */}
         <div className="about-header">
           <h2 className="section-title">About</h2>
           <div className="section-divider"></div>
         </div>
-        
-        {/* Main Content */}
         <div className="about-content">
-          
-          {/* Introduction paragraph */}
           <div className="about-intro">
             <p className="about-text highlight">
               Curiosity about how complex behavior emerges from simple rules.
             </p>
+            <i>I build projects that explore the intersection of technology and structured thinking, with a focus on creating intelligent systems that solve real-world problems.</i>
           </div>
           
-          {/* Interest Areas */}
           <div className="about-interests">
             
             <div className="interest-item">
