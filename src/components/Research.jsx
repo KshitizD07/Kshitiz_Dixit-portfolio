@@ -19,19 +19,22 @@ function Research() {
       sections: [
         {
           title: "Problem",
-          content: "Agentic coding tools can generate large amounts of code quickly, but without constraints they often produce unstructured or drifting architectures. Autonomous prompts may degrade code quality and consistency over time."
+          content: "Agentic coding tools generate code rapidly, but without constraints they often produce drifting or inconsistent architectures."
         },
         {
           title: "Approach",
-          content: "Designed a structured AI-assisted workflow that constrains agent behavior through task boundaries, project context, and human approval checkpoints. Tested using \"Aider\" as the execution interface while maintaining human control over architectural decisions."
+          content: "Designed a structured AI-assisted workflow using task boundaries, project context, and human approval checkpoints."
         },
         {
           title: "Workflow", // Changed from Observations
           content: [
-            "Smaller iterative prompts produce better structured code",
-            "Autonomous large prompts often degrade architecture",
-            "Clear constraints improve AI output quality",
-            "Human-in-the-loop validation prevents drift"
+            "Define task scope",
+            "Load project context",
+            "AI proposes plan",
+            "Human reviews and approves",
+            "AI implements changes",
+            "Documentation and session state updated",
+            <i>"Task → Context → Plan → Approval → Implementation → Documentation"</i>
           ]
         }
         // Notice: No Future Ideas here! The code will just skip it seamlessly.
@@ -39,57 +42,68 @@ function Research() {
     },
     {
       id: 2,
-      title: "Exploring Emergence in Cellular Automata",
+      title: "Governance-First Agentic Workflow",
       sections: [
         {
-          title: "Core Question", // Custom title!
-          content: "How do complex patterns emerge from simple local rules? Can we predict emergent behavior from rule specifications?"
+          title: "Existing Issue", // Custom title!
+          content: "Most agentic AI systems allow the reasoning model to both propose and influence execution, coupling reasoning with execution authority.This creates structural risks such as prompt injection, unsafe command generation, and authority drift during autonomous loops."
         },
+        // {
+        //   title: "Proposed Approach",
+        //   content: "A governance-first architecture that separates reasoning from execution authority.The LLM may generate action intent, but execution decisions are enforced by deterministic policy and risk validation layers."
+        // },
         {
-          title: "Approach",
-          content: "Implemented various cellular automata systems (Conway's Game of Life, Rule 30, etc.). Analyzed pattern formation, stability, and chaos across different rule sets."
-        },
-        {
-          title: "Observations",
+          title: "Architecture",
           content: [
-            "Simple rules can produce incredibly complex behavior",
-            "Some rules lead to stable patterns, others to chaos",
-            "Edge cases often reveal unexpected emergent properties",
-            "Initial conditions dramatically affect outcomes"
+            "Intent Proposal - LLM suggests an action",
+            "Intent Freezing - convert proposal into immutable intent",
+            "Risk Classification - engine assign risk level",
+            "Authority Engine - policy rules determine approval requirements",
+            "Sandboxed Execution - approved actions executed in sandbox",
+            "Observation & Logging - results recorded for audit and iteration",
+            <i>"Intent → Freeze → Risk → Authority → Execute → Log"</i>
           ]
         },
         {
-          title: "Future Ideas",
+          title: "Limitations",
           content: [
-            "Apply ML to predict emergent patterns",
-            "Design custom rule sets for specific behaviors",
-            "Explore 3D cellular automata",
-            "Investigate applications in procedural generation"
+            "Added governance layers increase execution latency",
+            "Risk classification policies require continuous refinement",
+            "Policy misconfiguration may introduce new failure modes",
+            "Architecture reduces autonomy compared to capability-driven agents"
           ]
         }
       ]
     },
     {
       id: 3,
-      title: "Reinforcement Learning in Simple Environments",
+      title: "Reinforcement Learning for Adaptive Traffic Control",
       sections: [
         {
-          title: "Problem",
-          content: "Understanding how RL agents learn optimal policies through trial and error. What factors influence learning speed and stability?"
+          title: "Experiment",
+          content: "Explored reinforcement learning approaches for adaptive traffic signal control using simulation-based environments."
         },
         {
-          title: "Methodology", // Another custom title
-          content: "Built simple grid-world environments. Implemented Q-learning and policy gradient methods. Experimented with reward shaping and exploration strategies."
-        },
-        {
-          title: "Key Takeaways",
+          title: "Architecture", // Another custom title
           content: [
-            "Reward design critically impacts learning",
-            "Exploration vs exploitation tradeoff is crucial",
-            "Simple environments reveal fundamental principles",
-            "Hyperparameters significantly affect convergence"
+            "Custom RL environment for traffic intersections",
+            "SUMO simulation with TraCI integration",
+            "PPO-based training for signal optimization",
+            "Multi-objective rewards (throughput, fairness, wait time)",
+            "Emergency vehicle prioritization",
+            <i>"Simulation → State → RL Policy → Signal Action → Traffic Feedback"</i>
           ]
-        }
+          
+        },
+        // {
+        //   title: "Key Takeaways",
+        //   content: [
+        //     "Reward design critically impacts learning",
+        //     "Exploration vs exploitation tradeoff is crucial",
+        //     "Simple environments reveal fundamental principles",
+        //     "Hyperparameters significantly affect convergence"
+        //   ]
+        // }
       ]
     }
   ];
@@ -149,4 +163,4 @@ function Research() {
   );
 }
 
-export default Research;
+export default Research;  

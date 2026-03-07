@@ -28,31 +28,31 @@ function Projects() {
   const projects = [
     {
       id: 1,
-      title: "Project Name 1",
-      description: "A brief, compelling description of what this project does and why it matters.",
-      problem: "What challenge or problem does this project address?",
-      approach: "Key technical approach or methodology used to solve the problem.",
-      technologies: ["React", "Node.js", "MongoDB", "WebGL"],
+      title: "Skill-Sphere",
+      description: "Skill intelligence platform for CS/IT students: GitHub-verified skills, AI learning roadmaps, and skill-based team matching & networking.",
+      problem: "CS/IT students lack credible skill proof for recruiters, struggle to find serious project teammates, and miss personalized, gap-based learning paths.",
+      approach: "Full-stack API-first architecture: React + Vite (fast frontend), Express + Prisma (type-safe backend), GitHub + Gemini integrations for verification and AI.",
+      technologies: ["React", "Node.js", "PostgreSQL","Prisma ORM", "Tailwind CSS","Express.js"],
       status: "In Development",
       link: "#" // Add GitHub or live demo link
     },
     {
       id: 2,
-      title: "Project Name 2",
-      description: "Another project showcasing different skills or domain.",
-      problem: "The core problem or opportunity this project tackles.",
-      approach: "Technical strategy and implementation highlights.",
-      technologies: ["Python", "TensorFlow", "FastAPI"],
+      title: "Intelli-Light",
+      description: "Reinforcement-learning system that dynamically optimizes traffic signals to reduce congestion and prioritize emergency vehicles in simulated urban intersections.",
+      problem: "Urban intersections suffer from inefficient fixed-time traffic signals, causing congestion, long wait times, and poor emergency vehicle prioritization. Traditional systems cannot adapt to dynamic traffic patterns or unexpected traffic surges.",
+      approach: "Developed a SUMO-based reinforcement learning environment where a PPO agent controls traffic signals dynamically.",
+      technologies: ["Python", "TensorFlow", "SUMO", "OpenAI Gym","TraCI","PPO"],
       status: "Experimental",
       link: "#"
     },
     {
       id: 3,
-      title: "Project Name 3",
-      description: "Third project demonstrating breadth of technical capability.",
-      problem: "What motivated this project?",
-      approach: "How did you approach solving it?",
-      technologies: ["C++", "OpenGL", "GLSL"],
+      title: "N.E.X.U.S.",
+      description: "N.E.X.U.S. is SkillSphere's intelligent squad formation engine. It connects students with complementary skills, while always leaving final decisions to the squad leader.",
+      problem: "I was tired of seeing great students miss out on meaningful projects just because team formation relied on self-reported skills, random Discords, or chance.",
+      approach: "Used Two-layer antifragile matching, multiple independent strategies working in parallel — making recommendations more robust and adaptive over time.",
+      technologies: ["React", "Node.js", "PostgreSQL", "Tailwind CSS","Express.js"],
       status: "Completed",
       link: "#"
     }
@@ -115,9 +115,9 @@ function Projects() {
               </div>
               
               {/* View Project Link */}
-              <a href={project.link} className="project-link">
+              {/* <a href={project.link} className="project-link">
                 View Project →
-              </a>
+              </a> */}
               
             </div>
           ))}

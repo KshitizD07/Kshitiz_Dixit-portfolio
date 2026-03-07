@@ -6,61 +6,25 @@
 import React from 'react';
 import './Skills.css';
 
-/**
- * Skills Component
- * 
- * Purpose: Show technical capability clearly
- * Divided into categories for easy scanning
- * 
- * Contains:
- * - Skill categories (Languages, Tools, Concepts)
- * - Skills displayed as nodes/cards
- * 
- * In later phases:
- * - Skills will appear as glowing nodes
- * - Nodes connected by faint lines (constellation style)
- * - Represents systems thinking
- * 
- * Design note: Visual layout hints at future constellation effect
- */
 function Skills() {
   
-  // Skill categories - easily modify or add more
+  // 1. CLEANED DATA STRUCTURE
+  // Removed all "level" tags. Now it's just a clean array of strings.
   const skillCategories = [
     {
       id: 1,
       category: "Programming Languages",
-      skills: [
-        { name: "C++", level: "Advanced" },
-        { name: "Python", level: "Advanced" },
-        { name: "JavaScript", level: "Intermediate" },
-        { name: "Bash", level: "Intermediate" },
-        { name: "SQL", level: "Intermediate" }
-      ]
+      skills: ["C++", "Python", "JavaScript", "Bash", "SQL"]
     },
     {
       id: 2,
       category: "Tools & Frameworks",
-      skills: [
-        { name: "Git", level: "Advanced" },
-        { name: "Linux", level: "Advanced" },
-        { name: "React", level: "Intermediate" },
-        { name: "Three.js", level: "Learning" },
-        { name: "Docker", level: "Intermediate" },
-        { name: "TensorFlow", level: "Learning" }
-      ]
+      skills: ["Git & GitHub", "Linux", "React", "Three.js", "Node.js", "Express"]
     },
     {
       id: 3,
       category: "Concepts & Knowledge",
-      skills: [
-        { name: "Algorithms", level: "Advanced" },
-        { name: "Data Structures", level: "Advanced" },
-        { name: "Reinforcement Learning", level: "Learning" },
-        { name: "Computer Graphics", level: "Intermediate" },
-        { name: "Automation", level: "Intermediate" },
-        { name: "System Design", level: "Intermediate" }
-      ]
+      skills: ["Algorithms", "Data Structures", "Reinforcement Learning", "System Design Fundamentals"]
     }
   ];
   
@@ -89,16 +53,13 @@ function Skills() {
               {/* Skills in this category */}
               <div className="skills-grid">
                 
+                {/* 2. CLEANED JSX */}
+                {/* Now simply maps over the strings directly without rendering any badges */}
                 {category.skills.map((skill, index) => (
                   <div key={index} className="skill-node">
                     
                     {/* Skill Name */}
-                    <div className="skill-name">{skill.name}</div>
-                    
-                    {/* Skill Level Badge */}
-                    <div className={`skill-level level-${skill.level.toLowerCase()}`}>
-                      {skill.level}
-                    </div>
+                    <div className="skill-name">{skill}</div>
                     
                     {/* Decorative dot (will become node in Phase 3+) */}
                     <div className="skill-dot"></div>

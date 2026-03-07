@@ -26,11 +26,10 @@ function About() {
           <div className="about-interests">
             
             <div className="interest-item">
-              <h3 className="interest-title">Complex Systems</h3>
+              <h3 className="interest-title">Systems & Experimentation</h3>
               <p className="interest-description">
-                Fascinated by how simple rules create emergent complexity. 
-                From cellular automata to swarm intelligence, exploring patterns 
-                that arise from local interactions.
+                I enjoy building systems and prototypes to explore ideas in practice.
+                Many of my projects start as experiments — testing architectures, algorithms, or workflows. 
               </p>
             </div>
             
@@ -43,14 +42,14 @@ function About() {
               </p>
             </div>
             
-            <div className="interest-item">
+            {/* <div className="interest-item">
               <h3 className="interest-title">Cognitive Models</h3>
               <p className="interest-description">
                 Curious about connections between computer science and human thinking. 
                 How do we structure knowledge? How do ideas form connections? 
                 What can computation teach us about cognition?
               </p>
-            </div>
+            </div> */}
             
           </div>
           

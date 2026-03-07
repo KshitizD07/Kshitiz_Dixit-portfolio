@@ -45,26 +45,33 @@
   letter-spacing: 2px;
 }
 
-/* Skills Grid */
+/* ============================================
+   THE FIX: Flex Wrap Tag Cloud
+   ============================================ */
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centers the tags perfectly */
   gap: var(--spacing-md);
 }
 
-/* Skill Node (Individual skill card) */
+/* Skill Node (Individual skill pill) */
 .skill-node {
   /* Node appearance */
   background-color: rgba(255, 255, 255, 0.02);
   border: var(--border-thin) solid rgba(0, 240, 255, 0.2);
   border-radius: var(--border-radius);
-  padding: var(--spacing-md);
+  
+  /* Generous padding for a clean button/pill look */
+  padding: 12px 24px;
+  
+  /* flex: 0 1 auto prevents the tags from stretching to fill empty space */
+  flex: 0 1 auto; 
   
   /* Center content */
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: var(--spacing-xs);
+  justify-content: center;
   
   /* Position for decorative dot */
   position: relative;
@@ -84,11 +91,19 @@
   box-shadow: var(--glow-subtle);
 }
 
+/* Skill Name */
+.skill-name {
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  white-space: nowrap; /* Prevents text breaking into two lines */
+}
+
 /* Decorative dot (hints at constellation node) */
 .skill-dot {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 8px;
+  right: 8px;
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -102,46 +117,10 @@
   box-shadow: 0 0 10px var(--color-accent-primary);
 }
 
-/* Skill Name */
-.skill-name {
-  font-size: var(--font-size-md);
-  color: var(--color-text-primary);
-  font-weight: 600;
-  text-align: center;
-}
-
-/* Skill Level Badge */
-.skill-level {
-  font-size: var(--font-size-xs);
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  text-align: center;
-}
-
-/* Level variations */
-.level-advanced {
-  background-color: rgba(0, 240, 255, 0.15);
-  color: var(--color-accent-primary);
-  border: 1px solid var(--color-accent-primary);
-}
-
-.level-intermediate {
-  background-color: rgba(122, 0, 255, 0.15);
-  color: var(--color-accent-secondary);
-  border: 1px solid var(--color-accent-secondary);
-}
-
-.level-learning {
-  background-color: rgba(255, 46, 99, 0.15);
-  color: var(--color-accent-warning);
-  border: 1px solid var(--color-accent-warning);
-}
-
 /* ============================================
    RESPONSIVE DESIGN
+   Because we use flex-wrap, the layout handles 
+   itself beautifully. We just scale down sizes.
    ============================================ */
 
 /* Tablets */
@@ -154,17 +133,12 @@
     gap: var(--spacing-lg);
   }
   
-  .skills-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: var(--spacing-sm);
-  }
-  
   .category-title {
     font-size: var(--font-size-lg);
   }
   
   .skill-node {
-    padding: var(--spacing-sm);
+    padding: 10px 20px;
   }
   
   .skill-name {
@@ -178,21 +152,12 @@
     margin-bottom: var(--spacing-lg);
   }
   
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
   .skill-node {
-    padding: var(--spacing-xs);
+    padding: 8px 16px;
   }
   
   .skill-name {
     font-size: var(--font-size-xs);
-  }
-  
-  .skill-level {
-    font-size: 10px;
-    padding: 3px 8px;
   }
   
   .skill-dot {

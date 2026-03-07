@@ -30,21 +30,14 @@ function Ideas() {
   const thoughts = [
     "Automation reduces cognitive load",
     "Systems become intelligent through stable feedback loops",
-    "Software design often mirrors natural systems",
-    "Emergence: complex behavior from simple rules",
     "Structure enables creativity, chaos limits it"
   ];
   
   // Areas of intellectual interest
   const interests = [
-    "Artificial Intelligence",
+    "Philosophy",
     "Cognitive Science",
-    "Systems Thinking",
-    "Philosophy of Mind",
-    "Complex Systems",
-    "Computational Creativity",
     "Human-Computer Interaction",
-    "Information Theory"
   ];
   
   return (
@@ -82,7 +75,7 @@ function Ideas() {
           
           {/* Interests Section */}
           <div className="interests-section">
-            <h3 className="subsection-title">Topics of Interest</h3>
+            <h3 className="subsection-title">Intellectual Interest</h3>
             
             <div className="interests-cloud">
               {interests.map((interest, index) => (
@@ -96,8 +89,7 @@ function Ideas() {
           {/* Closing statement */}
           <div className="ideas-closing">
             <p className="closing-text">
-              Exploring the space where computation meets cognition, 
-              structure meets emergence, and systems reveal their hidden patterns.
+              I enjoy reading philosophy and psychology books that explore how humans think, make decisions, and build systems of meaning. 
             </p>
           </div>
           
