@@ -3,10 +3,21 @@
    Fourth section - Experiments & Exploration
    ============================================ */
 
-import React from 'react';
+import React, { useState } from 'react';
 import './Research.css';
 
 function Research() {
+  
+  // Track which entries are expanded
+  const [expandedEntries, setExpandedEntries] = useState({});
+  
+  // Toggle expand/collapse for a specific entry
+  const toggleEntry = (entryId) => {
+    setExpandedEntries(prev => ({
+      ...prev,
+      [entryId]: !prev[entryId]
+    }));
+  };
   
   // 1. COMPLETELY DYNAMIC DATA STRUCTURE
   // You can now add, remove, or rename ANY section. 
@@ -124,38 +135,72 @@ function Research() {
         {/* Research Entries */}
         <div className="research-content">
           
-          {researchEntries.map((entry) => (
-            <div key={entry.id} className="research-entry">
-              
-              {/* Terminal-style header */}
-              <div className="entry-header">
-                <span className="terminal-prompt">~/research/</span>
-                <h3 className="entry-title">{entry.title}</h3>
-              </div>
-              
-              {/* 2. DYNAMIC RENDERING ENGINE */}
-              {/* This loops through whatever sections you defined above and renders them automatically */}
-              {entry.sections.map((section, index) => (
-                <div key={index} className="entry-section">
-                  <h4 className="entry-label">
-                    <span className="label-icon">▹</span> {section.title}
-                  </h4>
-                  
-                  {/* Check if the content is an array (list) or a string (paragraph) */}
-                  {Array.isArray(section.content) ? (
-                    <ul className="entry-list">
-                      {section.content.map((item, i) => (
-                        <li key={i} className="list-item">{item}</li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p className="entry-text">{section.content}</p>
-                  )}
+          {researchEntries.map((entry) => {
+            const isExpanded = expandedEntries[entry.id] || false;
+            
+            return (
+              <div key={entry.id} className="research-entry">
+                
+                {/* Terminal-style header */}
+                <div className="entry-header">
+                  <span className="terminal-prompt">~/research/</span>
+                  <h3 className="entry-title">{entry.title}</h3>
                 </div>
-              ))}
-              
-            </div>
-          ))}
+                
+                {/* 2. DYNAMIC RENDERING ENGINE */}
+                {/* Show only first section, then expand button, then rest if expanded */}
+                {entry.sections.map((section, index) => {
+                  // First section always visible
+                  const isFirstSection = index === 0;
+                  // Rest of sections only visible when expanded
+                  const shouldShow = isFirstSection || isExpanded;
+                  
+                  if (!shouldShow) return null;
+                  
+                  return (
+                    <div key={index} className="entry-section">
+                      <h4 className="entry-label">
+                        <span className="label-icon">▹</span> {section.title}
+                      </h4>
+                      
+                      {/* Check if the content is an array (list) or a string (paragraph) */}
+                      {Array.isArray(section.content) ? (
+                        <ul className="entry-list">
+                          {section.content.map((item, i) => (
+                            <li key={i} className="list-item">{item}</li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="entry-text">{section.content}</p>
+                      )}
+                    </div>
+                  );
+                })}
+                
+                {/* Expand/Collapse Button - Only show if there are more sections */}
+                {entry.sections.length > 1 && (
+                  <button 
+                    className="expand-button"
+                    onClick={() => toggleEntry(entry.id)}
+                    aria-label={isExpanded ? "Show less" : "Show more"}
+                  >
+                    {isExpanded ? (
+                      <>
+                        <span className="expand-icon">▲</span>
+                        Show Less
+                      </>
+                    ) : (
+                      <>
+                        <span className="expand-icon">▼</span>
+                        Read More
+                      </>
+                    )}
+                  </button>
+                )}
+                
+              </div>
+            );
+          })}
           
         </div>
       </div>
@@ -163,4 +208,4 @@ function Research() {
   );
 }
 
-export default Research;  
+export default Research;

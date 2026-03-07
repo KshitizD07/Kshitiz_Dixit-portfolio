@@ -167,6 +167,64 @@
 }
 
 /* ============================================
+   EXPAND BUTTON STYLES
+   ============================================ */
+
+.expand-button {
+  /* Reset button styles */
+  background: none;
+  border: none;
+  cursor: pointer;
+  
+  /* Styling matching theme */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  
+  /* Positioning */
+  width: 100%;
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  
+  /* Border matching card style */
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: var(--border-radius);
+  background-color: rgba(0, 0, 0, 0.3);
+  
+  /* Typography */
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-accent-primary);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  
+  /* Transitions */
+  transition: all var(--transition-fast);
+}
+
+.expand-button:hover {
+  background-color: rgba(0, 240, 255, 0.05);
+  border-color: var(--color-accent-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 240, 255, 0.2);
+}
+
+.expand-button:active {
+  transform: translateY(0);
+}
+
+.expand-icon {
+  font-size: var(--font-size-xs);
+  transition: transform var(--transition-fast);
+}
+
+.expand-button:hover .expand-icon {
+  transform: translateY(2px);
+}
+
+/* ============================================
    RESPONSIVE DESIGN
    ============================================ */
 
@@ -197,6 +255,11 @@
   .entry-title {
     font-size: var(--font-size-md);
   }
+  
+  .expand-button {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
 }
 
 /* Mobile */
@@ -216,5 +279,9 @@
   
   .entry-section {
     margin: var(--spacing-sm) 0;
+  }
+  
+  .expand-button {
+    margin-top: var(--spacing-sm);
   }
 }
