@@ -1,10 +1,6 @@
-/* ============================================
-   INTRO ANIMATION COMPONENT
-   Big Bang explosion → Particle dispersion → UI reconstruction
-   Duration: 3-4 seconds
-   ============================================ */
 
-import React, { useEffect, useRef, useState } from 'react';
+
+import { useEffect, useRef, useState } from 'react';
 import { ParticleSystem } from '../animations/ParticleSystem';
 import './IntroAnimation.css';
 

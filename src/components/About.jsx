@@ -1,9 +1,3 @@
-/* ============================================
-   ABOUT COMPONENT
-   Second section - Motivation & Interests
-   ============================================ */
-
-import React from 'react';
 import './About.css';
 
 
@@ -42,18 +36,10 @@ function About() {
               </p>
             </div>
             
-            {/* <div className="interest-item">
-              <h3 className="interest-title">Cognitive Models</h3>
-              <p className="interest-description">
-                Curious about connections between computer science and human thinking. 
-                How do we structure knowledge? How do ideas form connections? 
-                What can computation teach us about cognition?
-              </p>
-            </div> */}
             
           </div>
           
-          {/* Closing statement */}
+          
           <div className="about-approach">
             <p className="about-text">
               My approach combines technical implementation with conceptual exploration. 

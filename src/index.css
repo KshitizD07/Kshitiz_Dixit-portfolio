@@ -1,57 +1,42 @@
-/* ============================================
-   COSMIC PORTFOLIO - GLOBAL STYLES
-   Phase 2: Enhanced visual theme
-   ============================================ */
-
-/* Import Google Fonts for futuristic aesthetic */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* CSS Variables for Theme System */
 :root {
-  /* Color System - Cosmic + Cyberpunk */
-  --color-bg-primary: #0A0A0F;          /* Deep space background */
-  --color-bg-secondary: #121218;        /* Slightly lighter sections */
-  --color-text-primary: #E5E5E5;        /* Main text color */
-  --color-text-secondary: #9CA3AF;      /* Muted text */
-  --color-accent-primary: #00F0FF;      /* Cyan neon accent */
-  --color-accent-secondary: #7A00FF;    /* Purple accent */
-  --color-accent-warning: #FF2E63;      /* Highlight/warning color */
+  --color-bg-primary: #0A0A0F;          
+  --color-bg-secondary: #121218;        
+  --color-text-primary: #E5E5E5;        
+  --color-text-secondary: #9CA3AF;      
+  --color-accent-primary: #00F0FF;      
+  --color-accent-secondary: #7A00FF;    
+  --color-accent-warning: #FF2E63;      
   
-  /* Typography System */
-  --font-heading: 'Orbitron', sans-serif;  /* Futuristic headings */
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;  /* Clean body text */
+  --font-heading: 'Orbitron', sans-serif;  
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;  
   
-  /* Spacing System - Optimized for better content density */
-  --spacing-xs: 0.5rem;   /* 8px */
-  --spacing-sm: 1rem;     /* 16px */
-  --spacing-md: 1.5rem;   /* 24px - reduced from 32px */
-  --spacing-lg: 2.5rem;   /* 40px - reduced from 64px */
-  --spacing-xl: 4rem;     /* 64px - reduced from 96px */
+  --spacing-xs: 0.5rem;   
+  --spacing-sm: 1rem;    
+  --spacing-md: 1.5rem;   
+  --spacing-lg: 2.5rem;   
+  --spacing-xl: 4rem;     
   
-  /* Typography Scale */
-  --font-size-xs: 0.875rem;   /* 14px */
-  --font-size-sm: 1rem;       /* 16px */
-  --font-size-md: 1.125rem;   /* 18px */
-  --font-size-lg: 1.5rem;     /* 24px */
-  --font-size-xl: 2rem;       /* 32px */
-  --font-size-2xl: 3rem;      /* 48px */
-  --font-size-3xl: 4rem;      /* 64px */
-  
-  /* Border & Effects */
+ 
+  --font-size-xs: 0.875rem;   
+  --font-size-sm: 1rem;       
+  --font-size-md: 1.125rem;   
+  --font-size-lg: 1.5rem;     
+  --font-size-xl: 2rem;       
+  --font-size-2xl: 3rem;      
+  --font-size-3xl: 4rem;      
+   
   --border-thin: 1px;
   --border-radius: 4px;
   --glow-subtle: 0 0 20px rgba(0, 240, 255, 0.1);
   --glow-strong: 0 0 30px rgba(0, 240, 255, 0.3);
   
-  /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
   --transition-slow: 0.5s ease;
 }
 
-/* ============================================
-   RESET & BASE STYLES
-   ============================================ */
 
 * {
   margin: 0;
@@ -310,3 +295,33 @@ nav, .navigation {
   background-color: rgba(10, 10, 15, 0.8) !important; /* Deep space with 80% opacity */
   backdrop-filter: blur(10px);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

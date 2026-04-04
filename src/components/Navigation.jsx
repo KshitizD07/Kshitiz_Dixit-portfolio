@@ -1,26 +1,6 @@
-/* ============================================
-   NAVIGATION COMPONENT
-   Smooth section navigation bar
-   ============================================ */
-
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './Navigation.css';
 
-/**
- * Navigation Component
- * 
- * Features:
- * - Fixed position navigation
- * - Smooth scroll to sections
- * - Active section highlighting
- * - Hide/show on scroll
- * - Mobile responsive
- * 
- * In later phases:
- * - Particles react to navigation
- * - Glitch effect on hover
- * - Navigation triggers transitions
- */
 function Navigation() {
   const [activeSection, setActiveSection] = useState('hero');
   const [isVisible, setIsVisible] = useState(true);
@@ -80,7 +60,7 @@ function Navigation() {
       <div className="nav-container">
         
         {/* Logo/Brand */}
-        <div className="nav-brand" onClick={() => scrollToSection('hero')}>
+        <div className="nav-brand">
           <span className="brand-text">KSHITIZ</span>
         </div>
         
@@ -104,3 +84,22 @@ function Navigation() {
 }
 
 export default Navigation;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

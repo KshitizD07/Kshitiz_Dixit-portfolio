@@ -1,22 +1,5 @@
-/* ============================================
-   HERO COMPONENT
-   First section - Identity & Introduction
-   ============================================ */
-
-import React from 'react';
 import './Hero.css';
 
-/**
- * Hero Component
- * 
- * Purpose: Immediately communicate identity
- * 
- * Contains:
- * - Name
- * - Identity statement
- * - Brief description
- * - Call-to-action buttons
- */
 function Hero() {
   return (
     <section className="hero section" id="hero">

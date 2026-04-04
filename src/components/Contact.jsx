@@ -1,33 +1,7 @@
-/* ============================================
-   CONTACT COMPONENT
-   Seventh section - Connection Points
-   ============================================ */
-
-import React from 'react';
 import './Contact.css';
 
-/**
- * Contact Component
- * 
- * Purpose: Allow people to reach you
- * Keep this section simple and direct
- * 
- * Contains:
- * - Email
- * - GitHub
- * - LinkedIn
- * - Optional: Twitter, personal website, etc.
- * 
- * In later phases:
- * - Background particles slowly drift outward
- * - Creates sense of openness
- * - Subtle glow effects on hover
- * 
- * Design note: Clean and professional, not overwhelming
- */
 function Contact() {
   
-  // Contact information - update with your actual details
   const contactInfo = {
     email: "kshitizd777@gmail.com",
     github: "https://github.com/KshitizD07",

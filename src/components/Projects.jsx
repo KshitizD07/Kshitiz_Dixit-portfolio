@@ -1,27 +1,5 @@
-/* ============================================
-   PROJECTS COMPONENT
-   Third section - Technical Work
-   ============================================ */
-
-import React from 'react';
 import './Projects.css';
 
-/**
- * Projects Component
- * 
- * Purpose: Demonstrate technical work and implementations
- * 
- * Contains:
- * - Project cards in a grid layout
- * - Each card shows: name, description, problem, approach, tech stack, status
- * 
- * In later phases:
- * - Cards will have subtle glow effects
- * - Hover will reveal more details
- * - Cards can dissolve into particles during transitions
- * 
- * Note: Even one well-presented project is better than many poorly explained ones
- */
 function Projects() {
   
   // Project data - you can easily add/modify projects here

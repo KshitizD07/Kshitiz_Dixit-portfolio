@@ -1,39 +1,13 @@
-/* ============================================
-   IDEAS COMPONENT
-   Sixth section - Intellectual Curiosity
-   ============================================ */
-
-import React from 'react';
 import './Ideas.css';
 
-/**
- * Ideas Component
- * 
- * Purpose: Show intellectual curiosity and broader interests
- * This section is intentionally minimal and conceptual
- * 
- * Contains:
- * - Short thoughts or principles
- * - Topics of interest
- * - Floating fragments of ideas
- * 
- * In later phases:
- * - Text fragments will float and fade
- * - Particles drift in background
- * - Minimalist, contemplative feel
- * 
- * Design note: Most abstract section - focused on thinking, not doing
- */
 function Ideas() {
   
-  // Thought fragments - short conceptual statements
   const thoughts = [
     "Automation reduces cognitive load",
     "Systems become intelligent through stable feedback loops",
     "Structure enables creativity, chaos limits it"
   ];
   
-  // Areas of intellectual interest
   const interests = [
     "Philosophy",
     "Cognitive Science",

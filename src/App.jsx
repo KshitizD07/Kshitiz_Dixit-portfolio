@@ -9,10 +9,6 @@ function App() {
 
   return (
     <div className="app" style={{ position: 'relative', minHeight: '100vh' }}>
-      
-      {/* BULLETPROOF WRAPPER:
-        Using inline styles to guarantee it takes exactly 100% of your screen width and height.
-      */}
       <div style={{ 
         position: 'fixed', 
         top: 0, 
@@ -23,13 +19,12 @@ function App() {
         pointerEvents: 'none' 
       }}>
         <Canvas 
-          camera={{ position: [0, -2, 15], fov: 50 }}
+          camera={{ position: [0, -7, 15], fov: 40 }}
           style={{ width: '100%', height: '100%', display: 'block' }}
         >
-          {/* A visual grid on the floor (y = -5) to help us debug 3D space */}
-          <gridHelper args={[50, 50, '#FF2E63', '#444444']} position={[0, -5, 0]} />
+          {/* <gridHelper args={[50, 50, '#ff2e63', '#444444']} position={[0, -5, 0]} /> */}
           
-          <BigBangTree count={2000} />
+          <BigBangTree count={4000} />
         </Canvas>
       </div>
 

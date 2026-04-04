@@ -1,9 +1,4 @@
-/* ============================================
-   RESEARCH COMPONENT
-   Fourth section - Experiments & Exploration
-   ============================================ */
-
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Research.css';
 
 function Research() {

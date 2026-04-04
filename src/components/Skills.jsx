@@ -1,9 +1,3 @@
-/* ============================================
-   SKILLS COMPONENT
-   Fifth section - Technical Capabilities
-   ============================================ */
-
-import React from 'react';
 import './Skills.css';
 
 function Skills() {
