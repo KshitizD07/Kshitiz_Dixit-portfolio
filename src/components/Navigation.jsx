@@ -5,6 +5,7 @@ function Navigation() {
   const [activeSection, setActiveSection] = useState('hero');
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   // Navigation links
   const navLinks = [
@@ -52,25 +53,83 @@ function Navigation() {
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
+      setIsMobileMenuOpen(false); // Close mobile menu after navigation
     }
   };
   
+  // Close mobile menu on escape key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isMobileMenuOpen]);
+  
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+  
   return (
-    <nav className={`navigation ${isVisible ? 'visible' : 'hidden'}`}>
+    <nav 
+      className={`navigation ${isVisible ? 'visible' : 'hidden'}`}
+      role="navigation"
+      aria-label="Main navigation"
+    >
       <div className="nav-container">
         
         {/* Logo/Brand */}
-        <div className="nav-brand">
-          <span className="brand-text">KSHITIZ</span>
+        <div 
+          className="nav-brand"
+          role="banner"
+        >
+          <button
+            className="brand-text"
+            onClick={() => scrollToSection('hero')}
+            aria-label="Go to homepage"
+          >
+            KSHITIZ
+          </button>
         </div>
         
+        {/* Hamburger Menu Button (Mobile) */}
+        <button
+          className={`hamburger ${isMobileMenuOpen ? 'open' : ''}`}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="nav-menu"
+        >
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+        </button>
+        
         {/* Navigation Links */}
-        <ul className="nav-links">
+        <ul 
+          id="nav-menu"
+          className={`nav-links ${isMobileMenuOpen ? 'mobile-open' : ''}`}
+          role="menubar"
+        >
           {navLinks.map((link) => (
-            <li key={link.id} className="nav-item">
+            <li key={link.id} className="nav-item" role="none">
               <button
                 className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
                 onClick={() => scrollToSection(link.id)}
+                role="menuitem"
+                aria-current={activeSection === link.id ? 'page' : undefined}
               >
                 {link.label}
               </button>
@@ -78,28 +137,18 @@ function Navigation() {
           ))}
         </ul>
         
+        {/* Mobile Menu Overlay */}
+        {isMobileMenuOpen && (
+          <div 
+            className="mobile-overlay"
+            onClick={() => setIsMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
+        )}
+        
       </div>
     </nav>
   );
 }
 
 export default Navigation;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
