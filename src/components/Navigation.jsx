@@ -97,7 +97,6 @@ function Navigation() {
         >
           <button
             className="brand-text"
-            onClick={() => scrollToSection('hero')}
             aria-label="Go to homepage"
           >
             KSHITIZ
