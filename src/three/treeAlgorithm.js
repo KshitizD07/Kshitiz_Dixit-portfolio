@@ -1,8 +1,3 @@
-/* ============================================
-   ENHANCED TREE ALGORITHM
-   Better structure, natural branching, realistic proportions
-   ============================================ */
-
 export function generateTreeTargets(targetCount) {
   const positions = new Float32Array(targetCount * 3);
   const colors = new Float32Array(targetCount * 3);
@@ -177,6 +172,6 @@ export function generateTreeTargets(targetCount) {
     }
   }
   
-  console.log(`🌳 Enhanced tree generated with ${Math.floor(currentIndex / 3)} particles`);
+  console.log(`Enhanced tree generated with ${Math.floor(currentIndex / 3)} particles`);
   return { positions, colors };
 }

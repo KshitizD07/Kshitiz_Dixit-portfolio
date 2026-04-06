@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import BigBangTree from './scenes/BigBangTree';
 import Home from './pages/Home';
 import './App.css';
 
 function App() {
-  const [introFinished, setIntroFinished] = useState(false);
 
   return (
     <div className="app" style={{ position: 'relative', minHeight: '100vh' }}>

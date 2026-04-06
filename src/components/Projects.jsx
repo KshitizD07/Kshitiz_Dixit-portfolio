@@ -2,7 +2,6 @@ import './Projects.css';
 
 function Projects() {
   
-  // Project data - you can easily add/modify projects here
   const projects = [
     {
       id: 1,
