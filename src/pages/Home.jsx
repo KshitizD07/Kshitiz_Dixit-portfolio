@@ -10,16 +10,30 @@ import './Home.css';
 
 function Home() {
   return (
-    <main className="home">
+    <div className="home" id="main-content">
       <Navigation />
-      <Hero />
-      <About />
-      <Projects />
-      <Research />
-      <Skills />
-      <Ideas />
-      <Contact />
-    </main>
+      <section id="hero">
+        <Hero />
+      </section>
+      <section id="about">
+        <About />
+      </section>
+      <section id="projects">
+        <Projects />
+      </section>
+      <section id="research">
+        <Research />
+      </section>
+      <section id="skills">
+        <Skills />
+      </section>
+      <section id="ideas">
+        <Ideas />
+      </section>
+      <section id="contact">
+        <Contact />
+      </section>
+    </div>
   );
 }
 
