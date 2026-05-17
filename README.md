@@ -1,16 +1,54 @@
-# React + Vite
+# Cosmic Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance, immersive 3D portfolio website built with **React**, **Vite**, and **Three.js**. This project pushes the boundaries of web UI by integrating procedural particle animations with a modular, component-based architecture.
 
-Currently, two official plugins are available:
+## 🚀 Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   **Immersive 3D Experience**: Uses `@react-three/fiber` and `@react-three/drei` to render a dynamic "Big Bang" tree background that adapts to user device performance.
+*   **Procedural Animations**: Custom particle systems handle complex sequences including explosions, dispersal, and UI reconstruction.
+*   **Modular Architecture**: Built for scale, featuring discrete sections for Hero, About, Projects, Research, Skills, Ideas, and Contact.
+*   **Performance Optimized**: Automatically adjusts particle density based on screen dimensions for smooth HMR and user interaction.
+*   **Fluid Transitions**: Implements GSAP for precise animation control and smooth interaction flows.
 
-## React Compiler
+## 🛠 Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+*   **Frontend**: React 19, Vite
+*   **3D/Graphics**: Three.js, React Three Fiber, React Three Drei
+*   **Animation**: GSAP (GreenSock Animation Platform)
+*   **Controls**: Leva (integrated for rapid UI/3D debugging)
+*   **Tooling**: ESLint, PostCSS
 
-## Expanding the ESLint configuration
+## 📂 Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `src/components/`: Modular React components for each portfolio section.
+- `src/three/`: 3D-specific logic, including custom tree growth algorithms and shader implementations.
+- `src/animations/`: Custom logic for the particle systems powering the site transitions.
+- `src/pages/`: Main page layouts (`Home.jsx`).
+- `src/App.jsx`: Main entry point and 3D background wrapper.
+
+## 🏗 Setup & Installation
+
+1. Clone the repository.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+4. Build for production:
+   ```bash
+   npm run build
+   ```
+
+## 📜 Animation Workflow
+
+The portfolio features a unique intro sequence:
+1. **Explosion**: A high-energy circular explosion of 500+ particles.
+2. **Reconstruction**: Smooth transition as particles flow to form the layout of the landing section.
+3. **Reveal**: A clean fade-in that transitions the user from the 3D visual experience into the main content.
+
+---
+
+*Built with passion for immersive web design.*
