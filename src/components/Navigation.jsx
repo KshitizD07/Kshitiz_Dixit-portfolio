@@ -99,7 +99,7 @@ function Navigation() {
             className="brand-text"
             aria-label="Go to homepage"
           >
-            KSHITIZ
+            
           </button>
         </div>
         
