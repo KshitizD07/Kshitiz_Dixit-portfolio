@@ -14,6 +14,7 @@ export function Contact({ isActive }: SectionProps) {
         <div style={{ marginTop: '2rem', display: 'flex', gap: '2rem' }}>
           <a href="https://github.com/KshitizD07" className="highlight" style={{ textDecoration: 'none', marginBottom: 0 }} target="_blank" rel="noreferrer">GitHub</a>
           <a href="#" className="highlight" style={{ textDecoration: 'none', marginBottom: 0 }}>LinkedIn</a>
+          <a href="mailto:your.email@gmail.com" className="highlight" style={{ textDecoration: 'none', marginBottom: 0 }}>Email</a>
         </div>
       </div>
     </section>

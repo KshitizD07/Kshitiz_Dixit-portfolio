@@ -29,8 +29,10 @@ function WorldSwitcher({ currentWorld, setWorld }) {
           border: `1px solid ${currentWorld === 'pandora' ? 'rgba(212, 163, 115, 0.2)' : 'rgba(162, 210, 255, 0.2)'}`
         }}
       >
-        Kshitiz Dixit
-        <span style={{ fontSize: '0.8rem', opacity: 0.7 }}>▼</span>
+        <span style={{ fontSize: '0.9rem', opacity: 0.8, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+          {currentWorld === 'pandora' ? 'Change Realm' : 'Switch World'}
+        </span>
+        <span style={{ fontSize: '0.7rem', opacity: 0.7 }}>▼</span>
       </div>
 
       {isOpen && (
