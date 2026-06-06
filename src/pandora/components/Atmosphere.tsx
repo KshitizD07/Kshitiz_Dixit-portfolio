@@ -6,7 +6,10 @@ import * as THREE from 'three';
 export function Atmosphere() {
   const scroll = useScroll();
   const pointsRef = useRef<THREE.Points>(null);
-  const count = 2000;
+  
+  // Reduce particle count significantly on mobile devices for performance
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const count = isMobile ? 400 : 2000;
 
   // Create initial positions and random speeds for particles
   const [positions, step] = useMemo(() => {

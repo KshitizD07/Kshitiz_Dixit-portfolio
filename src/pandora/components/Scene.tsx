@@ -115,6 +115,8 @@ export function Scene() {
     }
   };
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
   return (
     <div className="theme-pandora">
       <div className="canvas-container">
@@ -152,7 +154,15 @@ export function Scene() {
         ))}
       </div>
 
-      <Canvas camera={{ position: [0, 0, 8], fov: 50 }} shadows>
+      {/* 
+        dpr caps resolution on high-density mobile screens to save GPU 
+        camera.position.z is moved back on mobile so the box fits inside the narrower viewport
+      */}
+      <Canvas 
+        camera={{ position: [0, 0, isMobile ? 12 : 8], fov: 50 }} 
+        shadows 
+        dpr={[1, 1.5]}
+      >
         <ScrollControls pages={TOTAL_PAGES} damping={0.25}>
           <ScrollManager setScrollObj={setScrollObj} />
           <ScrollWatcher onScroll={handleScrollUpdate} />
