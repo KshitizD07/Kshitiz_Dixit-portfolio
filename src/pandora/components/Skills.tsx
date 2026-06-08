@@ -24,22 +24,22 @@ export function Skills({ isActive }: SectionProps) {
   ];
 
   return (
-    <section className={`section section-left ${isActive ? 'section-active' : ''}`}>
+    <section className={`section ${isActive ? 'section-active' : ''}`}>
       <h2>Skills</h2>
       <div className="content-card">
         {skillCategories.map((category) => (
-          <div key={category.id} style={{ marginBottom: '1.5rem' }}>
+          <div key={category.id} style={{ marginBottom: '1.5rem', textAlign: 'center' }}>
             <h4 style={{ color: 'var(--color-accent)', marginBottom: '0.5rem', fontFamily: 'var(--font-title)', fontSize: '1.2rem' }}>
               {category.category}
             </h4>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center' }}>
               {category.skills.map((skill, index) => (
-                <span 
-                  key={index} 
-                  style={{ 
-                    background: 'rgba(212, 163, 115, 0.1)', 
-                    border: '1px solid rgba(212, 163, 115, 0.3)', 
-                    padding: '0.3rem 0.8rem', 
+                <span
+                  key={index}
+                  style={{
+                    background: 'rgba(212, 163, 115, 0.1)',
+                    border: '1px solid rgba(212, 163, 115, 0.3)',
+                    padding: '0.3rem 0.8rem',
                     borderRadius: '2px',
                     fontSize: '0.9rem',
                     color: 'var(--color-text-primary)'

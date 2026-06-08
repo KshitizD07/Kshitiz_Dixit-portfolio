@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import './App.css';
 import CosmicApp from './CosmicApp';
-import { Scene as PandoraScene } from './pandora/components/Scene';
 import './pandora/pandora-theme.css';
+
+const PandoraScene = lazy(() =>
+  import('./pandora/components/Scene').then(mod => ({ default: mod.Scene }))
+);
 
 // A simple styled dropdown component for switching worlds
 function WorldSwitcher({ currentWorld, setWorld }) {
@@ -96,7 +99,33 @@ function App() {
       {currentWorld === 'cosmic' ? (
         <CosmicApp />
       ) : (
-        <PandoraScene />
+        <Suspense fallback={
+          <div style={{
+            position: 'fixed', inset: 0,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            background: '#0a0a0a', zIndex: 100
+          }}>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{
+                width: '48px', height: '48px', margin: '0 auto 1.5rem',
+                border: '3px solid rgba(196, 154, 91, 0.2)',
+                borderTopColor: '#c49a5b',
+                borderRadius: '50%',
+                animation: 'spin 0.8s linear infinite'
+              }} />
+              <p style={{
+                fontFamily: "'IM Fell English SC', serif",
+                color: '#c49a5b', fontSize: '1.1rem',
+                letterSpacing: '0.15em', opacity: 0.9
+              }}>
+                Opening the Artifact…
+              </p>
+              <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+            </div>
+          </div>
+        }>
+          <PandoraScene />
+        </Suspense>
       )}
     </>
   );
