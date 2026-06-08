@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { ScrollControls, Scroll, useScroll, Environment } from '@react-three/drei';
+import { ScrollControls, Scroll, useScroll, Environment, Loader } from '@react-three/drei';
 import * as THREE from 'three';
 import { OuterBox, InnerArtifacts } from './PandoraBox';
 import { Atmosphere } from './Atmosphere';
@@ -25,7 +25,7 @@ function ScrollWatcher({ onScroll }: { onScroll: (progress: number) => void }) {
   return null;
 }
 
-function InteractiveScene({ hasScrolled, activeSection, isProjectHovered, onProjectHover }: { hasScrolled: boolean, activeSection: number, isProjectHovered: boolean, onProjectHover: (val: boolean) => void }) {
+function InteractiveScene({ hasScrolled, activeSection, isProjectHovered, onProjectHover, isMobile }: { hasScrolled: boolean, activeSection: number, isProjectHovered: boolean, onProjectHover: (val: boolean) => void, isMobile: boolean }) {
     const lightRef = useRef<THREE.SpotLight>(null);
     
     useFrame((state) => {
@@ -47,7 +47,7 @@ function InteractiveScene({ hasScrolled, activeSection, isProjectHovered, onProj
             <fog attach="fog" args={['#0a0a0a', 5, 25]} />
 
             <ambientLight intensity={0.2} color="#f5e6d3" />
-            <directionalLight position={[5, 5, 5]} intensity={1} color="#c49a5b" castShadow />
+            <directionalLight position={[5, 5, 5]} intensity={1} color="#c49a5b" castShadow={!isMobile} />
             
             <spotLight 
                 ref={lightRef}
@@ -57,7 +57,7 @@ function InteractiveScene({ hasScrolled, activeSection, isProjectHovered, onProj
                 penumbra={1} 
                 distance={25} 
                 angle={0.4} 
-                castShadow
+                castShadow={!isMobile}
             />
             
             <Atmosphere />
@@ -160,16 +160,25 @@ export function Scene() {
       */}
       <Canvas 
         camera={{ position: [0, 0, isMobile ? 12 : 8], fov: 50 }} 
-        shadows 
-        dpr={[1, 1.5]}
+        shadows={!isMobile} 
+        dpr={isMobile ? 1 : [1, 1.5]}
+        gl={{ antialias: !isMobile, powerPreference: "high-performance" }}
       >
-        <ScrollControls pages={TOTAL_PAGES} damping={0.25}>
-          <ScrollManager setScrollObj={setScrollObj} />
-          <ScrollWatcher onScroll={handleScrollUpdate} />
-          <InteractiveScene hasScrolled={hasScrolled} activeSection={activeSection} isProjectHovered={isProjectHovered} onProjectHover={setIsProjectHovered} />
-        </ScrollControls>
-        <Environment preset="night" />
+        <Suspense fallback={null}>
+          <ScrollControls pages={TOTAL_PAGES} damping={0.25}>
+            <ScrollManager setScrollObj={setScrollObj} />
+            <ScrollWatcher onScroll={handleScrollUpdate} />
+            <InteractiveScene hasScrolled={hasScrolled} activeSection={activeSection} isProjectHovered={isProjectHovered} onProjectHover={setIsProjectHovered} isMobile={isMobile} />
+          </ScrollControls>
+          {!isMobile && <Environment preset="night" resolution={256} />}
+        </Suspense>
       </Canvas>
+      <Loader
+        containerStyles={{ background: '#0a0a0a' }}
+        barStyles={{ background: '#c49a5b' }}
+        dataStyles={{ color: '#c49a5b', fontFamily: "'IM Fell English SC', serif" }}
+        dataInterpolation={(p) => `Opening the Artifact… ${p.toFixed(0)}%`}
+      />
       </div>
     </div>
   );
