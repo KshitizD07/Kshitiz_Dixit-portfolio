@@ -73,12 +73,12 @@ export function OuterBox() {
         <meshBasicMaterial ref={coreMaterialRef} color="#c49a5b" wireframe transparent />
       </mesh>
 
-      <mesh ref={topRef} geometry={geometry} material={material.clone()} position={[0, 1, 0]} rotation={[-Math.PI / 2, 0, 0]} />
-      <mesh ref={bottomRef} geometry={geometry} material={material.clone()} position={[0, -1, 0]} rotation={[Math.PI / 2, 0, 0]} />
-      <mesh ref={leftRef} geometry={geometry} material={material.clone()} position={[-1, 0, 0]} rotation={[0, -Math.PI / 2, 0]} />
-      <mesh ref={rightRef} geometry={geometry} material={material.clone()} position={[1, 0, 0]} rotation={[0, Math.PI / 2, 0]} />
-      <mesh ref={frontRef} geometry={geometry} material={material.clone()} position={[0, 0, 1]} />
-      <mesh ref={backRef} geometry={geometry} material={material.clone()} position={[0, 0, -1]} rotation={[0, Math.PI, 0]} />
+      <mesh ref={topRef} geometry={geometry} material={material} position={[0, 1, 0]} rotation={[-Math.PI / 2, 0, 0]} />
+      <mesh ref={bottomRef} geometry={geometry} material={material} position={[0, -1, 0]} rotation={[Math.PI / 2, 0, 0]} />
+      <mesh ref={leftRef} geometry={geometry} material={material} position={[-1, 0, 0]} rotation={[0, -Math.PI / 2, 0]} />
+      <mesh ref={rightRef} geometry={geometry} material={material} position={[1, 0, 0]} rotation={[0, Math.PI / 2, 0]} />
+      <mesh ref={frontRef} geometry={geometry} material={material} position={[0, 0, 1]} />
+      <mesh ref={backRef} geometry={geometry} material={material} position={[0, 0, -1]} rotation={[0, Math.PI, 0]} />
       
       <boxHelper>
         <mesh geometry={new THREE.BoxGeometry(2, 2, 2)} />

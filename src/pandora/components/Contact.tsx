@@ -1,10 +1,10 @@
-import React from 'react';
+import { memo } from 'react';
 
 interface SectionProps {
   isActive: boolean;
 }
 
-export function Contact({ isActive }: SectionProps) {
+function ContactBase({ isActive }: SectionProps) {
   return (
     <section className={`section ${isActive ? 'section-active' : ''}`}>
       <h2>Connect</h2>
@@ -20,3 +20,5 @@ export function Contact({ isActive }: SectionProps) {
     </section>
   );
 }
+
+export const Contact = memo(ContactBase);

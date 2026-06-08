@@ -1,10 +1,10 @@
-import React from 'react';
+import { memo } from 'react';
 
 interface SectionProps {
   isActive: boolean;
 }
 
-export function Skills({ isActive }: SectionProps) {
+function SkillsBase({ isActive }: SectionProps) {
   const skillCategories = [
     {
       id: 1,
@@ -55,3 +55,5 @@ export function Skills({ isActive }: SectionProps) {
     </section>
   );
 }
+
+export const Skills = memo(SkillsBase);

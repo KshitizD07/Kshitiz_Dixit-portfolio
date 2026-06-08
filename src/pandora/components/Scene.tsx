@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect, Suspense } from 'react';
+import { memo, startTransition, useState, useRef, useEffect, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { ScrollControls, Scroll, useScroll, Environment, Loader } from '@react-three/drei';
+import { ScrollControls, Scroll, useScroll, Environment, Loader, AdaptiveDpr } from '@react-three/drei';
 import * as THREE from 'three';
 import { OuterBox, InnerArtifacts } from './PandoraBox';
 import { Atmosphere } from './Atmosphere';
@@ -19,13 +19,17 @@ import { PORTFOLIO_SECTIONS, TOTAL_PAGES } from '../config';
 
 function ScrollWatcher({ onScroll }: { onScroll: (progress: number) => void }) {
   const scroll = useScroll();
+  const lastOffset = useRef(-1);
   useFrame(() => {
-    onScroll(scroll.offset);
+    const offset = scroll.offset;
+    if (Math.abs(offset - lastOffset.current) < 0.001) return;
+    lastOffset.current = offset;
+    onScroll(offset);
   });
   return null;
 }
 
-function InteractiveScene({ hasScrolled, activeSection, isProjectHovered, onProjectHover, isMobile }: { hasScrolled: boolean, activeSection: number, isProjectHovered: boolean, onProjectHover: (val: boolean) => void, isMobile: boolean }) {
+const InteractiveScene = memo(function InteractiveScene({ hasScrolled, activeSection, isProjectHovered, onProjectHover, isMobile }: { hasScrolled: boolean, activeSection: number, isProjectHovered: boolean, onProjectHover: (val: boolean) => void, isMobile: boolean }) {
     const lightRef = useRef<THREE.SpotLight>(null);
     
     useFrame((state) => {
@@ -74,7 +78,7 @@ function InteractiveScene({ hasScrolled, activeSection, isProjectHovered, onProj
             </Scroll>
         </>
     );
-}
+});
 
 export function Scene() {
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -86,23 +90,24 @@ export function Scene() {
   const [scrollObj, setScrollObj] = useState<any>(null);
 
   const handleScrollUpdate = (progress: number) => {
-    if (progress > 0.01 && !hasScrolled) {
-      setHasScrolled(true);
-    } else if (progress <= 0.01 && hasScrolled) {
-      setHasScrolled(false);
-    }
+    startTransition(() => {
+      if (progress > 0.01 && !hasScrolled) {
+        setHasScrolled(true);
+      } else if (progress <= 0.01 && hasScrolled) {
+        setHasScrolled(false);
+      }
 
-    if (progress > 0.08 && !isNavVisible) {
-      setIsNavVisible(true);
-    } else if (progress <= 0.08 && isNavVisible) {
-      setIsNavVisible(false);
-    }
+      if (progress > 0.08 && !isNavVisible) {
+        setIsNavVisible(true);
+      } else if (progress <= 0.08 && isNavVisible) {
+        setIsNavVisible(false);
+      }
 
-    // Dynamic math based on total pages
-    const currentSection = Math.round(progress * (TOTAL_PAGES - 1));
-    if (currentSection !== activeSection) {
-        setActiveSection(currentSection);
-    }
+      const currentSection = Math.round(progress * (TOTAL_PAGES - 1));
+      if (currentSection !== activeSection) {
+          setActiveSection(currentSection);
+      }
+    });
   };
 
   const scrollToSection = (index: number) => {
@@ -164,6 +169,7 @@ export function Scene() {
         dpr={isMobile ? 1 : [1, 1.5]}
         gl={{ antialias: !isMobile, powerPreference: "high-performance" }}
       >
+        <AdaptiveDpr pixelated={false} />
         <Suspense fallback={null}>
           <ScrollControls pages={TOTAL_PAGES} damping={0.25}>
             <ScrollManager setScrollObj={setScrollObj} />

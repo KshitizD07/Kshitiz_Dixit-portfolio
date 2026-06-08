@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { PORTFOLIO_SECTIONS } from '../config';
 
 interface OverlayProps {
@@ -7,7 +7,7 @@ interface OverlayProps {
   onProjectHover: (isHovering: boolean) => void;
 }
 
-export function Overlay({ hasScrolled, activeSection, onProjectHover }: OverlayProps) {
+function OverlayBase({ hasScrolled, activeSection, onProjectHover }: OverlayProps) {
   return (
     <div className="ui-overlay">
       {PORTFOLIO_SECTIONS.map((section, index) => {
@@ -27,3 +27,5 @@ export function Overlay({ hasScrolled, activeSection, onProjectHover }: OverlayP
     </div>
   );
 }
+
+export const Overlay = memo(OverlayBase);

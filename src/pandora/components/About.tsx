@@ -1,10 +1,10 @@
-import React from 'react';
+import { memo } from 'react';
 
 interface SectionProps {
   isActive: boolean;
 }
 
-export function About({ isActive }: SectionProps) {
+function AboutBase({ isActive }: SectionProps) {
   return (
     <section className={`section ${isActive ? 'section-active' : ''}`}>
       <h2>About</h2>
@@ -40,3 +40,5 @@ export function About({ isActive }: SectionProps) {
     </section>
   );
 }
+
+export const About = memo(AboutBase);

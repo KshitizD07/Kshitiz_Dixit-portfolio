@@ -1,10 +1,10 @@
-import React from 'react';
+import { memo } from 'react';
 
 interface SectionProps {
   isActive: boolean;
 }
 
-export function Ideas({ isActive }: SectionProps) {
+function IdeasBase({ isActive }: SectionProps) {
   return (
     <section className={`section ${isActive ? 'section-active' : ''}`}>
       <h2>Ideas</h2>
@@ -15,3 +15,5 @@ export function Ideas({ isActive }: SectionProps) {
     </section>
   );
 }
+
+export const Ideas = memo(IdeasBase);

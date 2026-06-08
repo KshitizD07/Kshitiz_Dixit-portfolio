@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { memo, useState } from 'react';
 
 interface SectionProps {
   isActive: boolean;
   onProjectHover: (isHovering: boolean) => void;
 }
 
-export function Projects({ isActive, onProjectHover }: SectionProps) {
+function ProjectsBase({ isActive, onProjectHover }: SectionProps) {
   const [expandedProjects, setExpandedProjects] = useState<Record<number, boolean>>({});
 
   const toggleProject = (projectId: number) => {
@@ -122,3 +122,5 @@ export function Projects({ isActive, onProjectHover }: SectionProps) {
     </section>
   );
 }
+
+export const Projects = memo(ProjectsBase);
