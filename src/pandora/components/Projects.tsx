@@ -18,11 +18,11 @@ function ProjectsBase({ isActive, onProjectHover }: SectionProps) {
   const projects = [
     {
       id: 1,
-      title: "SkillSphere (Powered by N.E.X.U.S.)",
-      description: "A production-grade skill intelligence platform featuring automated GitHub proficiency verification, context-aware AI learning paths, and an algorithmic squad-matching engine.",
+      title: "SkillSphere — Full-Stack Skill Verification & Squad Platform",
+      description: "An open-source collaboration platform that analyzes developer GitHub repositories to verify technical skills and match students into project squads.",
       problem: "CS/IT students lack empirical proof of their skills, struggle to find optimized learning paths, and rely on inefficient, manual networking to form project teams.",
-      approach: "Built on a decoupled, service-oriented Node.js/PostgreSQL backend and a Feature-Sliced React frontend. Engineered the 'N.E.X.U.S' engineâ€”a multi-strategy, background-scheduled matching algorithm. Implemented a Context-Aware LLM integration (Gemini 2.5) that analyzes a user's verified database profile to generate zero-redundancy learning roadmaps. Secured via strict httpOnly JWTs.",
-      technologies: ["React (Feature-Sliced)", "Node.js", "Express", "PostgreSQL", "Prisma ORM", "Socket.io", "Gemini 2.5 AI", "node-cron"],
+      approach: "Implemented a single-port architecture by wrapping Express in the native Node.js HTTP server to handle both REST APIs and real-time bidirectional WebSocket communication using Socket.IO. Built a tiered rate-limiting layer to protect authentication routes from brute-force attacks and reduce repetitive PostgreSQL read queries. Integrated Google Gemini AI to analyze profile repositories and dynamically generate personalized, non-redundant engineering learning roadmaps based on users' skill gaps.",
+      technologies: ["React (Feature-Sliced)", "Node.js", "Express.js", "PostgreSQL", "Socket.IO", "Google Gemini AI", "Prisma ORM", "Redis"],
       status: "Proprietary v1.1.0",
       link: "https://github.com/KshitizD07/Skill-Sphere"
     },
@@ -86,7 +86,7 @@ function ProjectsBase({ isActive, onProjectHover }: SectionProps) {
                   onMouseOver={(e) => e.currentTarget.style.background = 'rgba(212, 163, 115, 0.1)'}
                   onMouseOut={(e) => e.currentTarget.style.background = 'none'}
                 >
-                  {isExpanded ? 'Hide Architecture â†‘' : 'View Architecture â†“'}
+                  {isExpanded ? 'Hide Architecture ↑' : 'View Architecture ↓'}
                 </button>
 
                 {isExpanded && (
@@ -109,7 +109,7 @@ function ProjectsBase({ isActive, onProjectHover }: SectionProps) {
 
                     {project.link !== "#" && (
                       <a href={project.link} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-accent)', textDecoration: 'none', fontWeight: 'bold', display: 'inline-block' }}>
-                        Inspect Artifact â†’
+                        Inspect Artifact →
                       </a>
                     )}
                   </div>
