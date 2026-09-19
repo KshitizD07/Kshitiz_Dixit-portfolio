@@ -17,12 +17,12 @@ function Projects() {
   const projects = [
     {
       id: 1,
-      title: "SkillSphere - Cloud Infrastructure & CI/CD Pipeline",
-      description: "A hardened, multi-container production deployment on AWS EC2 featuring automated GitHub Actions CI/CD pipelines, multi-stage Alpine Docker containerization, and Redis caching.",
-      problem: "Deploying high-performance web applications with real-time WebSockets and databases on cost-effective cloud instances often leads to Out-Of-Memory (OOM) crashes, slow manual deployments, and security exposure from unprivileged root containers.",
-      approach: "Architected a 4-container production environment via Docker Compose (Nginx reverse proxy, Node.js API, PostgreSQL 16, Redis 7) using bridge networking and isolated volume persistence. Implemented multi-stage Docker builds with non-root Alpine users, reducing image footprints by >70%. Engineered an automated CI/CD pipeline with GitHub Actions executing linting, unit tests, Docker Buildx compilation, and automated SSH deployment to AWS EC2 with zero-downtime Prisma migrations. Hardened Ubuntu EC2 with 2GB Linux Swap and strict VPC Security Groups.",
-      technologies: ["AWS (EC2, VPC)", "Docker & Compose", "CI/CD (GitHub Actions)", "Docker Hub", "Nginx", "Linux & Bash", "PostgreSQL 16", "Redis 7", "Node.js", "Prisma ORM"],
-      status: "Production Deployed",
+      title: "SkillSphere - Full-Stack Skill Verification & Squad Platform",
+      description: "An open-source collaboration platform that analyzes developer GitHub repositories to verify technical skills and match students into project squads.",
+      problem: "CS/IT students lack empirical proof of their skills, struggle to find optimized learning paths, and rely on inefficient, manual networking to form project teams.",
+      approach: "Implemented a single-port architecture by wrapping Express in the native Node.js HTTP server to handle both REST APIs and real-time bidirectional WebSocket communication using Socket.IO. Built a tiered rate-limiting layer to protect authentication routes from brute-force attacks and reduce repetitive PostgreSQL read queries. Integrated Google Gemini AI to analyze profile repositories and dynamically generate personalized, non-redundant engineering learning roadmaps based on users' skill gaps.",
+      technologies: ["React (Feature-Sliced)", "Node.js", "Express.js", "PostgreSQL", "Socket.IO", "Google Gemini AI", "Prisma ORM", "Redis"],
+      status: "Proprietary v1.1.0",
       link: "https://github.com/KshitizD07/Skill-Sphere"
     },
     {
