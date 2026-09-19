@@ -544,17 +544,56 @@
 @media (max-width: 768px) {
   .mockup-header {
     flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 14px;
   }
   .mockup-url-bar {
     order: 3;
     width: 100%;
     max-width: 100%;
+    font-size: 0.72rem;
+  }
+  .mockup-footer-details {
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px;
   }
   .details-col.actions {
     width: 100%;
   }
+  .platform-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .platform-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
   .feedback-hero-banner {
     flex-direction: column;
     align-items: flex-start;
+    padding: 18px;
+    gap: 16px;
+  }
+  .view-board-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .showcase-tabs {
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+  }
+  .tab-btn {
+    padding: 8px 14px;
+    font-size: 0.82rem;
+  }
+  .modal-content {
+    width: 95vw;
+    max-height: 90vh;
   }
 }
