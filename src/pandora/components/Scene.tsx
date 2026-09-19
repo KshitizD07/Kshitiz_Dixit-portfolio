@@ -124,6 +124,14 @@ export function Scene() {
 
   return (
     <div className="theme-pandora">
+      {/* Creative Showcase Disclaimer Banner */}
+      <div className="pandora-disclaimer-banner">
+        <span className="disclaimer-icon">⚔️</span>
+        <span className="disclaimer-text">
+          <strong>Creative Showcase:</strong> Inspired by <em>Elden Ring</em> & game systems. Built solely for artistic exploration, not a corporate profile.
+        </span>
+      </div>
+
       <div className="canvas-container">
       {/* Top Navbar */}
       <nav className={`top-nav ${isNavVisible ? 'visible' : ''}`}>
