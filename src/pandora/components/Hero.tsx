@@ -6,7 +6,7 @@ interface HeroProps {
 
 function HeroBase({ hasScrolled }: HeroProps) {
   return (
-    <section className="section section-hero section-active">
+    <section className={`section section-hero ${hasScrolled ? 'hero-visible' : ''}`}>
       <h1 className="hero-title">Kshitiz Dixit</h1>
       <p className="hero-subtitle">Architect of Cloud Infrastructure & Scalable Systems</p>
       <p className="hero-lore">

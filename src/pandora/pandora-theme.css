@@ -352,27 +352,36 @@
 .theme-pandora .hero-title {
   font-size: 4rem;
   margin-bottom: 1rem;
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 0.8s ease-out;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .theme-pandora .hero-subtitle {
   font-size: 1.5rem;
   color: var(--color-text-muted);
-  opacity: 0.9;
-  transform: translateY(0);
-  transition: all 0.8s ease-out;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s;
 }
 
 .theme-pandora .hero-lore {
   font-size: 1.05rem;
   color: var(--color-accent);
-  opacity: 0.8;
+  opacity: 0;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-style: italic;
   margin-top: 1rem;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s;
+}
+
+.theme-pandora .hero-visible .hero-title,
+.theme-pandora .hero-visible .hero-subtitle,
+.theme-pandora .hero-visible .hero-lore {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @keyframes runic-pulse {
