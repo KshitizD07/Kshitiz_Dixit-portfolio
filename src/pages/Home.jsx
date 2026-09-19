@@ -2,7 +2,7 @@ import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Projects from '../components/Projects';
-import Research from '../components/Research';
+import Showcase from '../components/Showcase';
 import Skills from '../components/Skills';
 import Ideas from '../components/Ideas';
 import Contact from '../components/Contact';
@@ -21,8 +21,8 @@ function Home() {
       <section id="projects">
         <Projects />
       </section>
-      <section id="research">
-        <Research />
+      <section id="showcase">
+        <Showcase />
       </section>
       <section id="skills">
         <Skills />
