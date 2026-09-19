@@ -8,28 +8,36 @@ function SkillsBase({ isActive }: SectionProps) {
   const skillCategories = [
     {
       id: 1,
-      category: "Programming Languages",
-      skills: ["C++", "Python", "JavaScript", "Bash", "SQL"]
+      category: "The Forge — Cloud & DevOps",
+      skills: ["Docker", "K8s", "AWS", "OCI", "CI/CD Pipeline", "Git / GitHub", "Linux", "Bash"]
     },
     {
       id: 2,
-      category: "Tools & Frameworks",
-      skills: ["Git & GitHub", "Linux", "React", "Three.js", "Node.js", "Express"]
+      category: "The Conduit — Backend & Systems",
+      skills: ["Node.js", "Express.js", "PostgreSQL", "Redis", "Prisma ORM", "RESTful APIs", "Socket.IO"]
     },
     {
       id: 3,
-      category: "Concepts & Knowledge",
-      skills: ["Algorithms", "Data Structures", "Reinforcement Learning", "System Design Fundamentals"]
+      category: "The Runes — Languages",
+      skills: ["JavaScript", "Python", "C++", "SQL"]
+    },
+    {
+      id: 4,
+      category: "The Tomes — Foundations & Architecture",
+      skills: ["Data Structures & Algorithms", "Operating Systems", "Networking & Security", "DBMS", "System Design Basics"]
     }
   ];
 
   return (
     <section className={`section ${isActive ? 'section-active' : ''}`}>
-      <h2>Skills</h2>
+      <h2>The Disciplines</h2>
       <div className="content-card">
+        <span className="highlight" style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>
+          Armament of the Modern Engineer
+        </span>
         {skillCategories.map((category) => (
-          <div key={category.id} style={{ marginBottom: '1.5rem', textAlign: 'center' }}>
-            <h4 style={{ color: 'var(--color-accent)', marginBottom: '0.5rem', fontFamily: 'var(--font-title)', fontSize: '1.2rem' }}>
+          <div key={category.id} style={{ marginBottom: '1.5rem', textAlign: 'center', width: '100%' }}>
+            <h4 style={{ color: 'var(--color-accent)', marginBottom: '0.6rem', fontFamily: 'var(--font-title)', fontSize: '1.15rem' }}>
               {category.category}
             </h4>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center' }}>
@@ -37,12 +45,15 @@ function SkillsBase({ isActive }: SectionProps) {
                 <span
                   key={index}
                   style={{
-                    background: 'rgba(212, 163, 115, 0.1)',
+                    background: 'rgba(212, 163, 115, 0.08)',
                     border: '1px solid rgba(212, 163, 115, 0.3)',
-                    padding: '0.3rem 0.8rem',
+                    padding: '0.35rem 0.85rem',
                     borderRadius: '2px',
-                    fontSize: '0.9rem',
-                    color: 'var(--color-text-primary)'
+                    fontSize: '0.88rem',
+                    color: 'var(--color-text-primary)',
+                    fontFamily: 'var(--font-body)',
+                    letterSpacing: '0.02em',
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.5)'
                   }}
                 >
                   {skill}
