@@ -15,7 +15,7 @@ function ScrollManager({ setScrollObj }: { setScrollObj: (scroll: any) => void }
   return null;
 }
 
-import { PORTFOLIO_SECTIONS, TOTAL_PAGES } from '../config';
+import { PORTFOLIO_SECTIONS, TOTAL_PAGES, SCROLL_PAGES } from '../config';
 
 function ScrollWatcher({ onScroll }: { onScroll: (progress: number) => void }) {
   const scroll = useScroll();
@@ -103,7 +103,10 @@ export function Scene() {
         setIsNavVisible(false);
       }
 
-      const currentSection = Math.round(progress * (TOTAL_PAGES - 1));
+      const currentSection = Math.min(
+        TOTAL_PAGES - 1,
+        Math.round(progress * (TOTAL_PAGES - 1))
+      );
       if (currentSection !== activeSection) {
           setActiveSection(currentSection);
       }
@@ -112,7 +115,7 @@ export function Scene() {
 
   const scrollToSection = (index: number) => {
     if (scrollObj) {
-      const targetOffset = index / (TOTAL_PAGES - 1);
+      const targetOffset = index === TOTAL_PAGES - 1 ? 1 : index / (TOTAL_PAGES - 1);
       scrollObj.el.scrollTo({
         top: targetOffset * (scrollObj.el.scrollHeight - scrollObj.el.clientHeight),
         behavior: 'smooth'
@@ -179,7 +182,7 @@ export function Scene() {
       >
         <AdaptiveDpr pixelated={false} />
         <Suspense fallback={null}>
-          <ScrollControls pages={TOTAL_PAGES} damping={0.25}>
+          <ScrollControls pages={SCROLL_PAGES} damping={0.25}>
             <ScrollManager setScrollObj={setScrollObj} />
             <ScrollWatcher onScroll={handleScrollUpdate} />
             <InteractiveScene hasScrolled={hasScrolled} activeSection={activeSection} isProjectHovered={isProjectHovered} onProjectHover={setIsProjectHovered} isMobile={isMobile} />

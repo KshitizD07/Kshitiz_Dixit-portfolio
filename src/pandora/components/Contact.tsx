@@ -6,7 +6,7 @@ interface SectionProps {
 
 function ContactBase({ isActive }: SectionProps) {
   return (
-    <section className={`section ${isActive ? 'section-active' : ''}`}>
+    <section className={`section section-contact ${isActive ? 'section-active' : ''}`}>
       <h2>Leave a Rune</h2>
       <div className="content-card">
         <span className="highlight" style={{ fontSize: '1.2rem', marginBottom: '0.8rem' }}>

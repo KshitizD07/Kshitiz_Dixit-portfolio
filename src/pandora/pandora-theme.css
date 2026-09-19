@@ -395,6 +395,18 @@
   }
 }
 
+/* ---- Contact Section Clearance (Prevents bottom cutoff) ---- */
+.theme-pandora .section-contact {
+  padding: 3rem 1.5rem 8rem;
+  justify-content: center;
+}
+
+.theme-pandora .section-contact .content-card {
+  padding: 2rem 2rem 2.5rem;
+  max-width: 800px;
+  margin-bottom: 2rem;
+}
+
 /* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
   .theme-pandora .section {

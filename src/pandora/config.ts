@@ -22,3 +22,4 @@ export const PORTFOLIO_SECTIONS: SectionConfig[] = [
 ];
 
 export const TOTAL_PAGES = PORTFOLIO_SECTIONS.length;
+export const SCROLL_PAGES = 7.5;
