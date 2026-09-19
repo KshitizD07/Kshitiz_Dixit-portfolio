@@ -9,11 +9,11 @@ function Hero() {
         </h1>
         
         <p className="hero-subtitle">
-          Building intelligent systems and exploring structured thinking
+          Software Engineer specializing in Cloud Infrastructure, DevOps & Scalable Backend Systems
         </p>
         
         <p className="hero-description">
-          Software Developer interested in AI, systems design, and Full Stack Development. 
+          Focused on Linux, Docker containerization, CI/CD automation, AWS cloud deployment, and high-performance backend architectures.
         </p>
         
         <div className="hero-actions">
