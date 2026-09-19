@@ -16,3 +16,29 @@
   /* Smooth transitions for theme changes (future) */
   transition: background-color var(--transition-slow);
 }
+
+/* World Switcher Positioning and Responsiveness */
+.world-switcher-container {
+  position: fixed;
+  top: 1.5rem;
+  left: 2rem;
+  z-index: 9999;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .world-switcher-container {
+    top: 0.6rem;
+    left: 0.8rem;
+  }
+
+  .world-switcher-container .world-switcher-btn {
+    padding: 0.35rem 0.65rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  .world-switcher-container .world-switcher-btn span:first-child {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.05em !important;
+  }
+}

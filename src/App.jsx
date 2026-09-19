@@ -13,8 +13,9 @@ function WorldSwitcher({ currentWorld, setWorld }) {
 
   // We place this outside both theme wrappers so it doesn't get affected by specific container positioning
   return (
-    <div style={{ position: 'fixed', top: '1.5rem', left: '2rem', zIndex: 9999 }}>
+    <div className="world-switcher-container">
       <div 
+        className="world-switcher-btn"
         onClick={() => setIsOpen(!isOpen)}
         style={{
           fontFamily: currentWorld === 'pandora' ? "'IM Fell English SC', serif" : "'Space Mono', monospace",
