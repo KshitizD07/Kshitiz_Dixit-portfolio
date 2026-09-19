@@ -7,18 +7,23 @@ function Skills() {
   const skillCategories = [
     {
       id: 1,
-      category: "Programming Languages",
-      skills: ["C++", "Python", "JavaScript", "Bash", "SQL"]
+      category: "Cloud & DevOps",
+      skills: ["Docker", "K8s", "AWS", "OCI", "CI/CD Pipeline", "Git / GitHub", "Linux", "Bash"]
     },
     {
       id: 2,
-      category: "Tools & Frameworks",
-      skills: ["Git & GitHub", "Linux", "React", "Three.js", "Node.js", "Express"]
+      category: "Backend & Databases",
+      skills: ["Node.js", "Express.js", "PostgreSQL", "Redis", "Prisma ORM", "RESTful APIs", "Socket.IO"]
     },
     {
       id: 3,
-      category: "Concepts & Knowledge",
-      skills: ["Algorithms", "Data Structures", "Reinforcement Learning", "System Design Fundamentals"]
+      category: "Programming Languages",
+      skills: ["JavaScript", "Python", "C++", "SQL"]
+    },
+    {
+      id: 4,
+      category: "Core CS & Fundamentals",
+      skills: ["Data Structures & Algorithms", "Operating Systems", "Networking & Security", "DBMS", "System Design Basics"]
     }
   ];
   
