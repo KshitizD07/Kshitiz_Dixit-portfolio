@@ -2,6 +2,7 @@ import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useScroll, Text } from '@react-three/drei';
 import * as THREE from 'three';
+import { PORTFOLIO_SECTIONS } from '../config';
 
 // This component is the OUTER box that descends and expands (The "Shell")
 export function OuterBox() {
@@ -88,8 +89,6 @@ export function OuterBox() {
   );
 }
 
-import { PORTFOLIO_SECTIONS } from '../config';
-
 export function InnerArtifacts({ activeSection }: { activeSection: number }) {
   const scroll = useScroll();
   const squareRef = useRef<THREE.Mesh>(null);
@@ -100,7 +99,7 @@ export function InnerArtifacts({ activeSection }: { activeSection: number }) {
   const dragRotation = useRef({ x: 0, y: 0 });
   const previousPointer = useRef({ x: 0, y: 0 });
 
-  useFrame((state, delta) => {
+  useFrame((state) => {
     if (!squareRef.current || !textGroupRef.current) return;
     
     const progress = scroll.offset;
@@ -138,6 +137,8 @@ export function InnerArtifacts({ activeSection }: { activeSection: number }) {
   const sectionName = PORTFOLIO_SECTIONS[activeSection]?.name.toUpperCase() || "";
 
   const handlePointerDown = (e: any) => {
+    // Only capture drag on desktop mouse. On mobile/touch devices, allow native scroll swiping
+    if (e.pointerType === 'touch') return;
     e.stopPropagation();
     isDragging.current = true;
     previousPointer.current = { x: e.clientX, y: e.clientY };
