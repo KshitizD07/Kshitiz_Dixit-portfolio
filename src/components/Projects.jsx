@@ -17,12 +17,12 @@ function Projects() {
   const projects = [
     {
       id: 1,
-      title: "SkillSphere (Powered by N.E.X.U.S.)",
-      description: "A production-grade skill intelligence platform featuring automated GitHub proficiency verification, context-aware AI learning paths, and an algorithmic squad-matching engine.",
-      problem: "CS/IT students lack empirical proof of their skills, struggle to find optimized learning paths, and rely on inefficient, manual networking to form project teams.",
-      approach: "Built on a decoupled, service-oriented Node.js/PostgreSQL backend and a Feature-Sliced React frontend. Engineered the 'N.E.X.U.S' engine—a multi-strategy, background-scheduled matching algorithm. Implemented a Context-Aware LLM integration (Gemini 2.5) that analyzes a user's verified database profile to generate zero-redundancy learning roadmaps. Secured via strict httpOnly JWTs.",
-      technologies: ["React (Feature-Sliced)", "Node.js", "Express", "PostgreSQL", "Prisma ORM", "Socket.io", "Gemini 2.5 AI", "node-cron"],
-      status: "Proprietary v1.1.0",
+      title: "SkillSphere - Cloud Infrastructure & CI/CD Pipeline",
+      description: "A hardened, multi-container production deployment on AWS EC2 featuring automated GitHub Actions CI/CD pipelines, multi-stage Alpine Docker containerization, and Redis caching.",
+      problem: "Deploying high-performance web applications with real-time WebSockets and databases on cost-effective cloud instances often leads to Out-Of-Memory (OOM) crashes, slow manual deployments, and security exposure from unprivileged root containers.",
+      approach: "Architected a 4-container production environment via Docker Compose (Nginx reverse proxy, Node.js API, PostgreSQL 16, Redis 7) using bridge networking and isolated volume persistence. Implemented multi-stage Docker builds with non-root Alpine users, reducing image footprints by >70%. Engineered an automated CI/CD pipeline with GitHub Actions executing linting, unit tests, Docker Buildx compilation, and automated SSH deployment to AWS EC2 with zero-downtime Prisma migrations. Hardened Ubuntu EC2 with 2GB Linux Swap and strict VPC Security Groups.",
+      technologies: ["AWS (EC2, VPC)", "Docker & Compose", "CI/CD (GitHub Actions)", "Docker Hub", "Nginx", "Linux & Bash", "PostgreSQL 16", "Redis 7", "Node.js", "Prisma ORM"],
+      status: "Production Deployed",
       link: "https://github.com/KshitizD07/Skill-Sphere"
     },
     {
