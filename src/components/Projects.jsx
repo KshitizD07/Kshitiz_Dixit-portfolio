@@ -23,7 +23,8 @@ function Projects() {
       approach: "Implemented a single-port architecture by wrapping Express in the native Node.js HTTP server to handle both REST APIs and real-time bidirectional WebSocket communication using Socket.IO. Built a tiered rate-limiting layer to protect authentication routes from brute-force attacks and reduce repetitive PostgreSQL read queries. Integrated Google Gemini AI to analyze profile repositories and dynamically generate personalized, non-redundant engineering learning roadmaps based on users' skill gaps.",
       technologies: ["React (Feature-Sliced)", "Node.js", "Express.js", "PostgreSQL", "Socket.IO", "Google Gemini AI", "Prisma ORM", "Redis"],
       status: "Proprietary v1.1.0",
-      link: "https://github.com/KshitizD07/Skill-Sphere"
+      link: "https://github.com/KshitizD07/Skill-Sphere",
+      liveUrl: "https://skill-sphere-v1.vercel.app/"
     },
     {
       id: 2,
@@ -43,7 +44,8 @@ function Projects() {
       approach: "Built a full-stack Next.js 14 App Router portal with cryptographic session authorization (HMAC-SHA256, timing-safe evaluation, origin CSRF guards) and sliding-window rate limiting. Implemented a dual-tier persistence layer (Supabase cloud registry with automatic local fallback) and direct squad collaboration integrations with SkillSphere.",
       technologies: ["Next.js 14", "React 18", "Tailwind CSS", "Supabase", "Node.js", "Cryptographic Auth", "SWR"],
       status: "Active Studio Hub",
-      link: "https://github.com/KshitizD07/pinaka"
+      link: "https://github.com/KshitizD07/pinaka",
+      liveUrl: "https://pinaka-v1.vercel.app/"
     }
   ];
   
@@ -139,12 +141,44 @@ function Projects() {
                     </div>
                   </div>
                   
-                  {/* View Project Link */}
-                  {project.link !== "#" && (
-                    <a href={project.link} className="project-link" style={{ marginTop: '1.5rem', display: 'inline-block' }} target="_blank" rel="noopener noreferrer">
-                      View Repository →
-                    </a>
-                  )}
+                  {/* Project Action Links */}
+                  <div style={{ marginTop: '1.5rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        className="project-link"
+                        style={{
+                          background: 'rgba(0, 240, 255, 0.1)',
+                          border: '1px solid rgba(0, 240, 255, 0.3)',
+                          padding: '0.4rem 0.8rem',
+                          borderRadius: '4px',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '6px'
+                        }}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        🚀 Live Demo ↗
+                      </a>
+                    )}
+                    {project.link !== "#" && (
+                      <a
+                        href={project.link}
+                        className="project-link"
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          padding: '0.4rem 0'
+                        }}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        View Repository →
+                      </a>
+                    )}
+                  </div>
                 </div>
               )}
               

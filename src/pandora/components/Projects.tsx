@@ -24,7 +24,8 @@ function ProjectsBase({ isActive, onProjectHover }: SectionProps) {
       approach: "Implemented a single-port architecture by wrapping Express in the native Node.js HTTP server to handle both REST APIs and real-time bidirectional WebSocket communication using Socket.IO. Built a tiered rate-limiting layer to protect authentication routes from brute-force attacks and reduce repetitive PostgreSQL read queries. Integrated Google Gemini AI to analyze profile repositories and dynamically generate personalized, non-redundant engineering learning roadmaps based on users' skill gaps.",
       technologies: ["React (Feature-Sliced)", "Node.js", "Express.js", "PostgreSQL", "Socket.IO", "Google Gemini AI", "Prisma ORM", "Redis"],
       status: "Proprietary v1.1.0",
-      link: "https://github.com/KshitizD07/Skill-Sphere"
+      link: "https://github.com/KshitizD07/Skill-Sphere",
+      liveUrl: "https://skill-sphere-v1.vercel.app/"
     },
     {
       id: 2,
@@ -44,7 +45,8 @@ function ProjectsBase({ isActive, onProjectHover }: SectionProps) {
       approach: "Built a full-stack Next.js 14 App Router portal with cryptographic session authorization (HMAC-SHA256, timing-safe evaluation, origin CSRF guards) and sliding-window rate limiting. Implemented a dual-tier persistence layer (Supabase cloud registry with automatic local fallback) and direct squad collaboration integrations with SkillSphere.",
       technologies: ["Next.js 14", "React 18", "Tailwind CSS", "Supabase", "Node.js", "Cryptographic Auth", "SWR"],
       status: "Active Studio Hub",
-      link: "https://github.com/KshitizD07/pinaka"
+      link: "https://github.com/KshitizD07/pinaka",
+      liveUrl: "https://pinaka-v1.vercel.app/"
     }
   ];
 
@@ -117,11 +119,43 @@ function ProjectsBase({ isActive, onProjectHover }: SectionProps) {
                       </div>
                     </div>
 
-                    {project.link !== "#" && (
-                      <a href={project.link} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-accent)', textDecoration: 'none', fontWeight: 'bold', display: 'inline-block' }}>
-                        Inspect Artifact →
-                      </a>
-                    )}
+                    <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '1rem' }}>
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            background: 'rgba(212, 163, 115, 0.15)',
+                            border: '1px solid rgba(212, 163, 115, 0.4)',
+                            padding: '0.3rem 0.8rem',
+                            color: 'var(--color-accent)',
+                            textDecoration: 'none',
+                            fontWeight: 'bold',
+                            display: 'inline-block',
+                            fontSize: '0.9rem'
+                          }}
+                        >
+                          Visit Realm ↗
+                        </a>
+                      )}
+                      {project.link !== "#" && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            color: 'var(--color-accent)',
+                            textDecoration: 'none',
+                            fontWeight: 'bold',
+                            display: 'inline-block',
+                            padding: '0.3rem 0'
+                          }}
+                        >
+                          Inspect Artifact →
+                        </a>
+                      )}
+                    </div>
                   </div>
                 )}
               </div>

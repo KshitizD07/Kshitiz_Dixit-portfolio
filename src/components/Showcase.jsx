@@ -147,10 +147,18 @@ function Showcase() {
 
                 <div className="details-col actions">
                   <a
-                    href="https://github.com/KshitizD07/Skill-Sphere"
+                    href="https://skill-sphere-v1.vercel.app/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-primary showcase-action-btn"
+                  >
+                    Launch SkillSphere ↗
+                  </a>
+                  <a
+                    href="https://github.com/KshitizD07/Skill-Sphere"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-secondary showcase-action-btn"
                   >
                     View on GitHub ↗
                   </a>
