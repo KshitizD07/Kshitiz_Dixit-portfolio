@@ -28,13 +28,23 @@ function ProjectsBase({ isActive, onProjectHover }: SectionProps) {
     },
     {
       id: 2,
-      title: "Intelli-Light",
-      description: "Reinforcement-learning system that dynamically optimizes traffic signals to reduce congestion and prioritize emergency vehicles in simulated urban intersections.",
-      problem: "Urban intersections suffer from inefficient fixed-time traffic signals, causing congestion, long wait times, and poor emergency vehicle prioritization. Traditional systems cannot adapt to dynamic traffic patterns or unexpected traffic surges.",
-      approach: "Developed a SUMO-based reinforcement learning environment where a PPO agent controls traffic signals dynamically.",
-      technologies: ["Python", "TensorFlow", "SUMO", "OpenAI Gym", "TraCI", "PPO"],
-      status: "Experimental",
-      link: "#"
+      title: "Intelli-Light 3.0 & Sentinel — MARL Traffic Grid & Autonomous ANPR Intercept",
+      description: "Spatio-temporal multi-agent RL for coordinated traffic signal control coupled with city-wide multi-camera ANPR tracking and tactical red-wall intercept orchestration.",
+      problem: "Static signal timers create compounding urban gridlock and delay emergency responders, while municipal surveillance lacks closed-loop coordination between vehicle recognition, anomaly detection, and signal control.",
+      approach: "Engineered a topology-agnostic MARL system with GAT+LSTM networks in PyTorch/SUMO with NTCIP 1202 failsafes. Developed Sentinel: a tactical surveillance platform featuring a multi-frame RapidFuzz OCR consensus voter (0/D, 1/I confusion tolerance), kinematic road-snapping, GNN congestion-aware anomaly scoring, Markovian escape forecasting, and SHA-256 hash-chained intercept audit logging.",
+      technologies: ["Python", "FastAPI", "PyTorch", "GAT+LSTM", "SUMO", "TraCI", "WebSockets", "RapidFuzz", "SQLite", "Leaflet"],
+      status: "Research / Prototype",
+      link: "https://github.com/KshitizD07/Intelli_Light"
+    },
+    {
+      id: 3,
+      title: "Pinaka — Studio & Project Ledger Platform",
+      description: "A sovereign project studio and editorial portfolio registry bridging ambitious engineering ideas with verified squad collaboration.",
+      problem: "High-potential engineering projects often die in isolated GitHub repositories without visibility, structured peer review, or cross-functional team formation.",
+      approach: "Built a full-stack Next.js 14 App Router portal with cryptographic session authorization (HMAC-SHA256, timing-safe evaluation, origin CSRF guards) and sliding-window rate limiting. Implemented a dual-tier persistence layer (Supabase cloud registry with automatic local fallback) and direct squad collaboration integrations with SkillSphere.",
+      technologies: ["Next.js 14", "React 18", "Tailwind CSS", "Supabase", "Node.js", "Cryptographic Auth", "SWR"],
+      status: "Active Studio Hub",
+      link: "https://github.com/KshitizD07/pinaka"
     }
   ];
 
